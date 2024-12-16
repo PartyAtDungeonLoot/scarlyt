@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: none
 title: Scarlyt - The Card Game
 description: Official website for Scarlyt - An exciting new card game. Launching now on Kickstarter!
 ---
