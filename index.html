@@ -16,15 +16,27 @@
         }
 
         header {
-            background: #2d2d2d;
+            background: url('logo.jpg') center/cover no-repeat;
             color: white;
-            padding: 1rem 0;
             text-align: center;
+            padding: 2rem 0;
+            position: relative;
         }
-
+    
+        header .banner {
+            background: rgba(0, 0, 0, 0.5); /* Add a transparent overlay for better text readability */
+            padding: 1rem;
+            display: inline-block;
+        }
+    
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem;
+        }
+    
+        header p {
+            margin: 0;
+            font-size: 1.2rem;
         }
 
         .container {
@@ -92,8 +104,10 @@
 </head>
 <body>
     <header>
-        <h1>Scarlyt</h1>
-        <p>The Ultimate Card Game Adventure</p>
+        <div class="banner">
+            <h1>Scarlyt</h1>
+            <p>The Card and Dice Party Game</p>
+        </div>
     </header>
 
     <div class="container">
