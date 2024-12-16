@@ -15,28 +15,18 @@
             color: #333;
         }
 
-        header {
-            background: url('logo.jpg') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            position: relative;
-        }
-    
         header .banner {
-            background: rgba(0, 0, 0, 0.5); /* Add a transparent overlay for better text readability */
-            padding: 1rem;
-            display: inline-block;
+            position: relative;
+            width: 100%;
+            height: 300px; /* Adjust height as needed */
+            overflow: hidden;
         }
     
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
-        }
-    
-        header p {
-            margin: 0;
-            font-size: 1.2rem;
+        header .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image is not stretched and retains its aspect ratio */
+            object-position: center; /* Centers the image */
         }
 
         .container {
@@ -105,8 +95,6 @@
 <body>
     <header>
         <div class="banner">
-            <h1>Scarlyt</h1>
-            <p>The Card and Dice Party Game</p>
         </div>
     </header>
 
