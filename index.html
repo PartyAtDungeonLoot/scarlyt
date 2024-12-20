@@ -3,146 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official website for Scarlyt - An exciting new card game. Launching now on Kickstarter!">
+    <meta name="description" content="Official website for Scarlyt - A card-and-dice game combining strategy, luck, and beautiful artwork. Launching now on Kickstarter!">
     <title>Scarlyt - The Card and Dice Party Game</title>
     <link rel="stylesheet" href="styles.css">
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        line-height: 1.6;
-        color: #fff;
-        background: #000; /* Fully black background for a darker theme */
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #fff;
+            background: #000;
+        }
 
-    header .banner {
-        position: relative;
-        width: 100%;
-        height: 300px; /* Adjust height as needed */
-        overflow: hidden;
-        background: #000;
-    }
+        header .banner {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background: #000;
+        }
 
-    header .banner img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* Ensure the whole image is visible without cropping */
-        object-position: center; /* Centers the image */
-    }
+        header .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
 
-    header .banner-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.6); /* Adds a semi-transparent overlay for better readability */
-        padding: 1rem;
-        border-radius: 5px;
-    }
+        header .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1rem;
+            border-radius: 5px;
+        }
 
-    header .banner-text h1 {
-        margin: 0;
-        font-size: 2.5rem;
-    }
+        header .banner-text h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
 
-    header .banner-text p {
-        margin: 0;
-        font-size: 1.2rem;
-    }
+        header .banner-text p {
+            margin: 0;
+            font-size: 1.2rem;
+        }
 
-    .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 1rem;
-    }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
 
-    .video-section {
-        text-align: center;
-        margin: 2rem 0;
-    }
+        .video-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
 
-    .video-section iframe {
-        width: 100%;
-        max-width: 800px;
-        height: 450px;
-        border: none;
-    }
+        .video-section iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+        }
 
-    .kickstarter-button {
-        display: inline-block;
-        margin: 1.5rem 0;
-        padding: 1rem 2rem;
-        background: #f04e30;
-        color: white;
-        font-size: 1.2rem;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background 0.3s ease;
-    }
+        .kickstarter-button {
+            display: inline-block;
+            margin: 1.5rem 0;
+            padding: 1rem 2rem;
+            background: #f04e30;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
 
-    .kickstarter-button:hover {
-        background: #d94328;
-    }
+        .kickstarter-button:hover {
+            background: #d94328;
+        }
 
-    .about-section {
-        text-align: center;
-        margin: 2rem 0;
-    }
+        .about-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
 
-    .about-section p {
-        font-size: 1.1rem;
-        max-width: 800px;
-        margin: 0 auto;
-    }
+        .about-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    footer {
-        background: #111; /* Slightly lighter black for contrast */
-        color: white;
-        text-align: center;
-        padding: 1rem 0;
-        margin-top: 2rem;
-    }
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
 
-    footer a {
-        color: #f04e30;
-        text-decoration: none;
-    }
+        footer a {
+            color: #f04e30;
+            text-decoration: none;
+        }
 
-    footer a:hover {
-        text-decoration: underline;
-    }
-</style>
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="banner">
             <img src="logo.jpg" alt="Scarlyt Banner">
+            <div class="banner-text">
+                <h1>Scarlyt</h1>
+                <p>The Card and Dice Party Game</p>
+            </div>
         </div>
     </header>
 
     <div class="container">
         <section class="video-section">
-            <h2>Watch Our Expected Launch Announcement</h2>
-                <iframe id="ytplayer" type="text/html" width="720" height="405"
-                src="https://www.youtube.com/embed/TDnJbXu_L0s"
-                frameborder="0" allowfullscreen></iframe>
+            <h2>Watch Our Kickstarter Announcement</h2>
+            <iframe id="ytplayer" src="https://www.youtube.com/embed/TDnJbXu_L0s" frameborder="0" allowfullscreen></iframe>
             <div>
                 <a href="https://www.kickstarter.com/projects/scarlyt/scarlyt-the-card-and-dice-party-game" class="kickstarter-button" target="_blank">Support Us on Kickstarter</a>
             </div>
         </section>
 
         <section class="about-section">
-            <h2>How is Scarlyt played?</h2>
-            <p>Scarlyt features 6 unique decks—Buildings, Spells, Creatures, Artifacts, Heroes, and Bonus—each containing 7 distinct cards, totaling 35 cards per deck. Players take turns rolling a six-sided die and drawing from the corresponding deck. The goal is to battle your opponents, defend your position, and collect cards for your hand and the board. We're currently designing a complete gameplay video, but we're waiting to finalize the artwork before revealing everything. Stay tuned!</p>
+            <h2>What Makes Scarlyt Special?</h2>
+            <p>
+                Scarlyt blends strategic card play, the thrill of dice rolls, and the creativity of tabletop gaming into one unforgettable experience. With six unique decks and over 200 cards featuring stunning artwork, it’s easy to learn but offers endless tactical depth for players of all levels.
+            </p>
+            <p>
+                Players take turns rolling a die and drawing from the corresponding deck. Build your hand, play powerful cards, and outwit your opponents to claim victory. Stay tuned for our gameplay video, coming soon!
+            </p>
         </section>
     </div>
 
     <footer>
         <p>&copy; 2024 Scarlyt. All rights reserved.</p>
-        <p><a href="https://dungeonloot.store" target="_blank">Visit our parent company: DungeonLoot.Store</a></p>
+        <p><a href="https://dungeonloot.store" target="_blank">Visit DungeonLoot.Store</a></p>
     </footer>
 </body>
 </html>
