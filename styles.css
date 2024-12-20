@@ -117,7 +117,7 @@ header .banner img {
 .box-items {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem; /* Ensure consistent gap between items */
     justify-items: center;
     align-items: center;
     max-width: 100%; /* Prevent items from exceeding viewport width */
