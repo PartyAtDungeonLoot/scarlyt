@@ -19,7 +19,7 @@
         header .banner {
             position: relative;
             width: 100%;
-            height: 400px; /* Adjusted for a square logo layout */
+            height: 400px;
             overflow: hidden;
             background: #000;
         }
@@ -27,7 +27,7 @@
         header .banner img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Ensure the whole logo is visible */
+            object-fit: contain;
             object-position: center;
         }
 
@@ -42,7 +42,7 @@
         }
 
         .video-section iframe {
-            width: 100%; /* Full width for the video */
+            width: 100%;
             height: 450px;
             border: none;
         }
@@ -64,31 +64,63 @@
         }
 
         .about-section {
-            text-align: center;
             margin: 2rem 0;
         }
 
-        .about-section p {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
+        .about-section h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .about-section .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .about-section .card {
+            background: #111;
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: calc(50% - 1rem);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-section .card h3 {
+            margin-top: 0;
+            color: #f04e30;
+        }
+
+        .about-section .card p {
+            margin: 0.5rem 0;
         }
 
         footer {
             background: #111;
             color: white;
             text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
+            padding: 2rem 0;
         }
 
-        footer a {
-            color: #f04e30;
-            text-decoration: none;
+        footer .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        footer .social-icons a {
+            display: inline-block;
+        }
+
+        footer .social-icons img {
+            width: 32px;
+            height: 32px;
+        }
+
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
@@ -109,32 +141,45 @@
 
         <section class="about-section">
             <h2>What Makes Scarlyt Special?</h2>
-            <p>Scarlyt combines the calculated strategy of card games with the excitement of dice rolls, creating a unique tabletop experience that’s both engaging and unpredictable. Designed for players aged 10 and up, it’s easy to learn but offers strategic depth to keep you coming back for more.</p>
-            <p>
-                Here’s why you’ll love Scarlyt:
-                <ul>
-                    <li><strong>🎲 Strategy Meets Dice:</strong> Make tactical decisions while embracing the luck of the roll.</li>
-                    <li><strong>💡 Bluff and Surprise:</strong> Outsmart your opponents with cunning plays and unexpected twists.</li>
-                    <li><strong>🎨 Stunning Artwork:</strong> Featuring 42 unique designs crafted by talented independent artists.</li>
-                    <li><strong>🤝 Inclusive Gameplay:</strong> Whether you’re new to tabletop games or a seasoned pro, Scarlyt offers something for everyone.</li>
-                </ul>
-            </p>
-            <h3>What’s in the Box?</h3>
-            <p>
-                Your Scarlyt set includes:
-                <ul>
-                    <li>6 unique decks, totaling 210 cards.</li>
-                    <li>2 custom six-sided dice.</li>
-                    <li>A detailed rulebook for smooth gameplay.</li>
-                    <li>All packaged in a durable, travel-friendly box.</li>
-                </ul>
-            </p>
+            <div class="content">
+                <div class="card">
+                    <h3>🎲 Strategy Meets Dice</h3>
+                    <p>Blend tactical card strategies with the excitement of dice rolls to create dynamic, unpredictable gameplay.</p>
+                </div>
+                <div class="card">
+                    <h3>💡 Bluff and Surprise</h3>
+                    <p>Outsmart your opponents with cunning bluffs and unexpected plays, keeping them on their toes at every turn.</p>
+                </div>
+                <div class="card">
+                    <h3>🎨 Stunning Artwork</h3>
+                    <p>Enjoy 42 unique illustrations crafted by talented independent artists, making Scarlyt a true feast for the eyes.</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 Accessible Yet Deep</h3>
+                    <p>Simple enough for players aged 10+, yet layered with strategies to keep even the most seasoned gamers engaged.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>What’s in the Box?</h2>
+            <p>Scarlyt includes everything you need for an epic game night:</p>
+            <ul>
+                <li>6 unique decks, totaling 210 cards.</li>
+                <li>2 custom six-sided dice.</li>
+                <li>A detailed rulebook for smooth gameplay.</li>
+                <li>A durable, travel-friendly box for easy storage.</li>
+            </ul>
         </section>
     </div>
 
     <footer>
+        <div class="social-icons">
+            <a href="https://twitter.com" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="https://facebook.com" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+        </div>
         <p>&copy; 2024 Scarlyt. All rights reserved.</p>
-        <p><a href="https://dungeonloot.store" target="_blank">Visit DungeonLoot.Store</a></p>
     </footer>
 </body>
 </html>
