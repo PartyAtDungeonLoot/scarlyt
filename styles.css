@@ -181,6 +181,14 @@ footer p {
         margin-bottom: 1rem;
     }
 
+    .whats-in-the-box {
+        padding: 1rem;
+    }
+
+    .box-items {
+        grid-template-columns: 1fr;
+    }
+
     .footer .social-icons {
         flex-direction: column;
         align-items: center;
@@ -196,6 +204,14 @@ footer p {
     .about-section .card {
         width: 100%;
         margin-bottom: 1rem;
+    }
+
+    .whats-in-the-box {
+        padding: 1rem;
+    }
+
+    .box-items {
+        grid-template-columns: 1fr;
     }
 
     .footer .social-icons {
@@ -216,6 +232,14 @@ footer p {
         margin-bottom: 1rem;
     }
 
+    .whats-in-the-box {
+        padding: 1rem;
+    }
+
+    .box-items {
+        grid-template-columns: 1fr;
+    }
+
     .footer .social-icons {
         flex-direction: column;
         align-items: center;
@@ -232,6 +256,14 @@ footer p {
     .about-section .card {
         width: 100%;
         margin-bottom: 1rem;
+    }
+
+    .whats-in-the-box {
+        padding: 1rem;
+    }
+
+    .box-items {
+        grid-template-columns: 1fr;
     }
 
     .footer .social-icons {
