@@ -100,6 +100,48 @@
         .about-section .card p {
             margin: 0.5rem 0;
         }
+        .whats-in-the-box {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: #111; /* Optional: Add a subtle background to the section */
+            border-radius: 10px; /* Smooth edges for a polished look */
+        }
+        
+        .whats-in-the-box h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #f04e30; /* Matches the primary color theme */
+        }
+        
+        .box-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            justify-items: center; /* Centers items within their grid cells */
+            align-items: center; /* Aligns items vertically */
+        }
+        
+        .box-item {
+            text-align: center;
+            padding: 1rem;
+            background-color: #222; /* Adds a card-like background */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+        }
+        
+        .box-item img {
+            width: 80px; /* Adjust icon size */
+            height: 80px;
+            object-fit: contain; /* Ensures the icon retains its aspect ratio */
+            margin-bottom: 1rem;
+        }
+        
+        .box-item p {
+            font-size: 1rem;
+            color: #ddd; /* Softer white for readability */
+            margin: 0;
+        }
 
         footer {
             background: #111;
@@ -188,16 +230,28 @@
             </div>
         </section>
 
-        <section class="about-section">
-            <h2>What’s in the Box?</h2>
-            <p>Scarlyt includes everything you need for an epic game night:</p>
-            <ul>
-                <li>6 unique decks, totaling 210 cards.</li>
-                <li>2 custom six-sided dice.</li>
-                <li>A detailed rulebook for smooth gameplay.</li>
-                <li>A durable, travel-friendly box for easy storage.</li>
-            </ul>
+        <section class="whats-in-the-box">
+            <h2>What's in the Box?</h2>
+            <div class="box-items">
+                <div class="box-item">
+                    <img src="deck-icon.png" alt="Decks Icon">
+                    <p>6 unique decks featuring 210 cards and 42 stunning designs.</p>
+                </div>
+                <div class="box-item">
+                    <img src="dice-icon.png" alt="Dice Icon">
+                    <p>2 custom six-sided dice for exciting gameplay twists.</p>
+                </div>
+                <div class="box-item">
+                    <img src="rulebook-icon.png" alt="Rulebook Icon">
+                    <p>A detailed rulebook with tips and examples.</p>
+                </div>
+                <div class="box-item">
+                    <img src="box-icon.png" alt="Box Icon">
+                    <p>Durable, travel-ready packaging for game nights anywhere.</p>
+                </div>
+            </div>
         </section>
+
         
         <section class="about-section">
             <h2>How can I get the game?</h2>
