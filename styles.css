@@ -62,14 +62,6 @@ header .banner img {
 .about-section {
     margin: 2rem 0;
     text-align: center;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-}
-
-.about-section h2 {
-    text-align: center;
-    margin-bottom: 1rem;
 }
 
 .about-section .content {
@@ -151,6 +143,7 @@ footer {
 
 footer .social-icons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
@@ -180,9 +173,27 @@ footer p {
 @media (max-width: 768px) {
     .about-section .content {
         flex-direction: column;
+        align-items: center;
     }
 
     .about-section .card {
         width: 100%;
+    }
+
+    .footer .social-icons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section .card {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .footer .social-icons {
+        flex-direction: column;
+        align-items: center;
     }
 }
