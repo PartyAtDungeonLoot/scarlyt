@@ -1,0 +1,188 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #fff;
+    background: #000;
+}
+
+/* Header Styles */
+header .banner {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background: #000;
+}
+
+header .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Container */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Video Section */
+.video-section {
+    margin: 2rem 0;
+}
+
+.video-section iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+}
+
+.kickstarter-button {
+    display: inline-block;
+    margin: 1.5rem 0;
+    padding: 1rem 2rem;
+    background: #f04e30;
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.kickstarter-button:hover {
+    background: #d94328;
+}
+
+/* About Section */
+.about-section {
+    margin: 2rem 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.about-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.about-section .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.about-section .card {
+    background: #111;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: calc(50% - 1rem);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.about-section .card h3 {
+    margin-top: 0;
+    color: #f04e30;
+}
+
+.about-section .card p {
+    margin: 0.5rem 0;
+}
+
+/* What's in the Box Section */
+.whats-in-the-box {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: #111;
+    border-radius: 10px;
+}
+
+.whats-in-the-box h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #f04e30;
+}
+
+.box-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    align-items: center;
+}
+
+.box-item {
+    text-align: center;
+    padding: 1rem;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.box-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.box-item p {
+    font-size: 1rem;
+    color: #ddd;
+    margin: 0;
+}
+
+/* Footer Styles */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+footer .social-icons img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+footer .social-icons img:hover {
+    transform: scale(1.1);
+}
+
+footer .social-icons a {
+    display: inline-block;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .about-section .content {
+        flex-direction: column;
+    }
+
+    .about-section .card {
+        width: 100%;
+    }
+}
