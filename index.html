@@ -68,9 +68,6 @@
             text-align: center;
             justify-content: center; /* Centers items horizontally */
             align-items: center; /* Centers items vertically */
-        }
-
-        .about-section {
             list-style-type: none;
         }
 
@@ -129,6 +126,16 @@
 
         footer p {
             margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-section .content {
+                flex-direction: column; /* Stacks items vertically */
+            }
+        
+            .about-section .card {
+                width: 100%; /* Ensures the cards take the full width */
+            }
         }
     </style>
 </head>
