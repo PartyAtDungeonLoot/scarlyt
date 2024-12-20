@@ -208,6 +208,7 @@ header .banner img {
 .developers p {
     max-width: 300px;
     margin: 0.5rem 0;
+    text-align: center;
 }
 
 /* Footer Styles */
