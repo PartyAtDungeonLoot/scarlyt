@@ -206,19 +206,19 @@ header .banner img {
 }
 
 .developers {
-    text-align: center; /* Center the paragraphs under "The Developers" */
+    text-align: center;
 }
 
 .developers-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 300px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 .developers p {
-    max-width: 300px;
+    max-width: 600px;
     margin: 0.5rem 0;
 }
 
