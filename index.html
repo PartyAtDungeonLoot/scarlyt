@@ -19,7 +19,7 @@
         header .banner {
             position: relative;
             width: 100%;
-            height: 300px;
+            height: 400px; /* Adjusted for a square logo layout */
             overflow: hidden;
             background: #000;
         }
@@ -27,30 +27,8 @@
         header .banner img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Ensure the whole logo is visible */
             object-position: center;
-        }
-
-        header .banner-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 1rem;
-            border-radius: 5px;
-        }
-
-        header .banner-text h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        header .banner-text p {
-            margin: 0;
-            font-size: 1.2rem;
         }
 
         .container {
@@ -60,13 +38,11 @@
         }
 
         .video-section {
-            text-align: center;
             margin: 2rem 0;
         }
 
         .video-section iframe {
-            width: 100%;
-            max-width: 800px;
+            width: 100%; /* Full width for the video */
             height: 450px;
             border: none;
         }
@@ -119,30 +95,39 @@
 <body>
     <header>
         <div class="banner">
-            <img src="logo.jpg" alt="Scarlyt Banner">
-            <div class="banner-text">
-                <h1>Scarlyt</h1>
-                <p>The Card and Dice Party Game</p>
-            </div>
+            <img src="logo.jpg" alt="Scarlyt Logo">
         </div>
     </header>
 
     <div class="container">
         <section class="video-section">
-            <h2>Watch Our Kickstarter Announcement</h2>
             <iframe id="ytplayer" src="https://www.youtube.com/embed/TDnJbXu_L0s" frameborder="0" allowfullscreen></iframe>
-            <div>
+            <div style="text-align: center;">
                 <a href="https://www.kickstarter.com/projects/scarlyt/scarlyt-the-card-and-dice-party-game" class="kickstarter-button" target="_blank">Support Us on Kickstarter</a>
             </div>
         </section>
 
         <section class="about-section">
             <h2>What Makes Scarlyt Special?</h2>
+            <p>Scarlyt combines the calculated strategy of card games with the excitement of dice rolls, creating a unique tabletop experience that’s both engaging and unpredictable. Designed for players aged 10 and up, it’s easy to learn but offers strategic depth to keep you coming back for more.</p>
             <p>
-                Scarlyt blends strategic card play, the thrill of dice rolls, and the creativity of tabletop gaming into one unforgettable experience. With six unique decks and over 200 cards featuring stunning artwork, it’s easy to learn but offers endless tactical depth for players of all levels.
+                Here’s why you’ll love Scarlyt:
+                <ul>
+                    <li><strong>🎲 Strategy Meets Dice:</strong> Make tactical decisions while embracing the luck of the roll.</li>
+                    <li><strong>💡 Bluff and Surprise:</strong> Outsmart your opponents with cunning plays and unexpected twists.</li>
+                    <li><strong>🎨 Stunning Artwork:</strong> Featuring 42 unique designs crafted by talented independent artists.</li>
+                    <li><strong>🤝 Inclusive Gameplay:</strong> Whether you’re new to tabletop games or a seasoned pro, Scarlyt offers something for everyone.</li>
+                </ul>
             </p>
+            <h3>What’s in the Box?</h3>
             <p>
-                Players take turns rolling a die and drawing from the corresponding deck. Build your hand, play powerful cards, and outwit your opponents to claim victory. Stay tuned for our gameplay video, coming soon!
+                Your Scarlyt set includes:
+                <ul>
+                    <li>6 unique decks, totaling 210 cards.</li>
+                    <li>2 custom six-sided dice.</li>
+                    <li>A detailed rulebook for smooth gameplay.</li>
+                    <li>All packaged in a durable, travel-friendly box.</li>
+                </ul>
             </p>
         </section>
     </div>
