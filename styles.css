@@ -82,8 +82,9 @@ header .banner img {
     background: #111;
     padding: 1.5rem;
     border-radius: 8px;
-    width: 200px; /* Fixed width for consistent sizing */
-    height: 250px; /* Fixed height for consistent sizing */
+    width: 100%;
+    max-width: 300px; /* Set a maximum width */
+    min-width: 200px; /* Set a minimum width */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     box-sizing: border-box; /* Ensure padding is included in the width */
 }
@@ -130,9 +131,9 @@ header .banner img {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     box-sizing: border-box; /* Ensure padding is included in the width */
-    min-width: 20%; /* Fixed width for consistent sizing */
-    max-width: 90%;
-    height: 250px; /* Fixed height for consistent sizing */
+    width: 100%;
+    max-width: 300px; /* Set a maximum width */
+    min-width: 200px; /* Set a minimum width */
 }
 
 .box-item img {
