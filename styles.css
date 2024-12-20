@@ -148,8 +148,13 @@ header .banner img {
 
 /* Meet the Team Section */
 .meet-the-team {
-    margin: 2rem 0;
     text-align: center;
+    margin: 2rem 0;
+    padding: 2rem 1rem; /* Add padding to prevent overflow */
+    background-color: #111;
+    border-radius: 10px;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    max-width: 100%; /* Prevent section from exceeding viewport width */
 }
 
 .meet-the-team h2, .meet-the-team h3 {
