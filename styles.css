@@ -146,6 +146,46 @@ header .banner img {
     margin: 0;
 }
 
+/* Meet the Team Section */
+.meet-the-team {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.meet-the-team h2, .meet-the-team h3 {
+    color: #f04e30;
+}
+
+.artists, .developers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.artists a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    width: 150px;
+}
+
+.artists img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.artists p {
+    margin-top: 0.5rem;
+}
+
+.developers p {
+    max-width: 300px;
+    margin: 0.5rem 0;
+}
+
 /* Footer Styles */
 footer {
     background: #111;
