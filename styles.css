@@ -27,7 +27,7 @@ header .banner img {
 
 /* Container */
 .container {
-    max-width: 1100px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 1rem;
     box-sizing: border-box; /* Ensure padding is included in the width */
@@ -54,6 +54,7 @@ header .banner img {
     text-decoration: none;
     border-radius: 5px;
     transition: background 0.3s ease;
+    max-width: 100%; /* Prevent button from exceeding viewport width */
 }
 
 .kickstarter-button:hover {
@@ -74,6 +75,7 @@ header .banner img {
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    max-width: 100%; /* Prevent content from exceeding viewport width */
 }
 
 .about-section .card {
@@ -83,6 +85,7 @@ header .banner img {
     width: calc(50% - 1rem);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     box-sizing: border-box; /* Ensure padding is included in the width */
+    max-width: 100%; /* Prevent card from exceeding viewport width */
 }
 
 .about-section .card h3 {
@@ -102,6 +105,7 @@ header .banner img {
     background-color: #111;
     border-radius: 10px;
     box-sizing: border-box; /* Ensure padding is included in the width */
+    max-width: 100%; /* Prevent section from exceeding viewport width */
 }
 
 .whats-in-the-box h2 {
@@ -116,6 +120,7 @@ header .banner img {
     gap: 1.5rem;
     justify-items: center;
     align-items: center;
+    max-width: 100%; /* Prevent items from exceeding viewport width */
 }
 
 .box-item {
@@ -125,6 +130,7 @@ header .banner img {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     box-sizing: border-box; /* Ensure padding is included in the width */
+    max-width: 100%; /* Prevent item from exceeding viewport width */
 }
 
 .box-item img {
@@ -147,6 +153,7 @@ footer {
     text-align: center;
     padding: 2rem 1rem; /* Add padding to prevent overflow */
     box-sizing: border-box; /* Ensure padding is included in the width */
+    max-width: 100%; /* Prevent footer from exceeding viewport width */
 }
 
 footer .social-icons {
@@ -155,6 +162,7 @@ footer .social-icons {
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
+    max-width: 100%; /* Prevent icons from exceeding viewport width */
 }
 
 footer .social-icons img {
@@ -258,7 +266,7 @@ footer p {
     .about-section .content {
         flex-direction: column;
         align-items: center;
-        padding: 0 0.4rem;
+        padding: 0 0.5rem;
     }
 
     .about-section .card {
