@@ -157,12 +157,12 @@ header .banner img {
     max-width: 100%; /* Prevent section from exceeding viewport width */
 }
 
-.meet-the-team h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-}
 .meet-the-team h2, .meet-the-team h3 {
     color: #f04e30;
+}
+
+.meet-the-team h2 {
+    font-size: 2rem; /* Match the font size of the "What's in the Box" section */
 }
 
 .team-items {
