@@ -110,9 +110,21 @@
 
         footer .social-icons {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 1rem 0;
+            justify-content: center; /* Centers the icons horizontally */
+            gap: 1rem; /* Adds spacing between the icons */
+            margin-top: 1rem;
+        }
+        
+        footer .social-icons img {
+            width: 40px; /* Set a uniform width */
+            height: 40px; /* Set a uniform height */
+            object-fit: contain; /* Ensures the aspect ratio is preserved */
+            border-radius: 50%; /* Optional: Makes the icons circular */
+            transition: transform 0.3s ease; /* Adds a hover animation */
+        }
+        
+        footer .social-icons img:hover {
+            transform: scale(1.1); /* Slightly enlarges the icon on hover */
         }
 
         footer .social-icons a {
