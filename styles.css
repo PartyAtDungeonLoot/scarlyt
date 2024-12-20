@@ -130,7 +130,8 @@ header .banner img {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     box-sizing: border-box; /* Ensure padding is included in the width */
-    width: 20%; /* Fixed width for consistent sizing */
+    min-width: 20%; /* Fixed width for consistent sizing */
+    max-width: 90%;
     height: 250px; /* Fixed height for consistent sizing */
 }
 
