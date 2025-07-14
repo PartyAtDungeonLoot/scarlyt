@@ -7,6 +7,31 @@
     <title>Scarlyt - The Card and Dice Party Game</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="favicon.png" type="image/png">
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script>
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "firebase/app";
+        import { getAnalytics } from "firebase/analytics";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAlGopvsq3Se5dAMK_xhqPRLhndI9NjSwE",
+          authDomain: "scarlyt-backers.firebaseapp.com",
+          projectId: "scarlyt-backers",
+          storageBucket: "scarlyt-backers.firebasestorage.app",
+          messagingSenderId: "1022444554752",
+          appId: "1:1022444554752:web:92435de2352596ef69a6e5",
+          measurementId: "G-MD5MJCXHJ4"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
 </head>
 <body>
     <header>
@@ -28,6 +53,7 @@
                 <span class="close">&times;</span>
                 <h2>Become a Super Backer 💎</h2>
                 <p>Enter your info below, then support us on Ko-Fi and we'll let you know when collector sets are available.</p>
+                <p class="formStatus"></p>
                 <form id="sbForm">
                   <input type="text" name="name" placeholder="Your Name" required>
                   <input type="email" name="email" placeholder="Your Email" required>
@@ -177,29 +203,41 @@
         document.getElementById('sbModal').style.display = 'none';
       }
     };
-    document.getElementById('sbForm').addEventListener('submit', e => {
-      e.preventDefault();
+
     
-      const form = e.target;
-      const honeypot = form.website.value;
-      if (honeypot.trim() !== "") return;
-    
-      const params = new URLSearchParams({
-        name: form.name.value,
-        email: form.email.value,
-        message: form.message.value
-      });
-    
-      fetch('https://script.google.com/macros/s/AKfycbz8csy49ggwc5TDKsrp9V5wpNutx0LZLvko6CKb4Ss7j4JJrQe_gk2LNqpjFj9biGuAkQ/exec?' + params.toString())
-        .then(res => res.json())
-        .then(response => {
-          console.log('Success!', response);
-          window.location.href = "https://ko-fi.com/dungeonloot";
-        })
-        .catch(err => {
-          console.error('Error!', err.message);
-          alert("Oops! Something went wrong.");
+        // Get a reference to the Firestore database
+        const db = firebase.firestore();
+
+        // Get references to your form elements
+        const subscriberForm = document.getElementById('subscriberForm');
+        const formStatus = document.getElementById('formStatus');
+
+        // Add an event listener for form submission
+        subscriberForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+              const honeypot = e.target.website.value;
+              if (honeypot.trim() !== "") return;
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            try {
+                // Add a new document to the "subscribers" collection
+                await db.collection('subscribers').add({
+                    name: name,
+                    email: email,
+                    message: message,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp() // Adds a server-generated timestamp
+                });
+
+              console.log('Success!', response);
+              window.location.href = "https://ko-fi.com/dungeonloot";
+                subscriberForm.reset(); // Clear the form
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                formStatus.textContent = 'Oops! Something went wrong. Please try again.';
+            }
         });
-    });
 </script>
 </html>
