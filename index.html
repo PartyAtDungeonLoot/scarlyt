@@ -202,12 +202,12 @@
         // Add an event listener for form submission
         subscriberForm.addEventListener('submit', async (e) => {
             e.preventDefault(); // Prevent default form submission
-              const honeypot = e.target.website.value;
+              const honeypot = document.getElementByName('website').value;
               if (honeypot.trim() !== "") return;
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            const name = document.getElementByName('name').value;
+            const email = document.getElementByName('email').value;
+            const message = document.getElementByName('message').value;
 
             try {
                 // Add a new document to the "subscribers" collection
