@@ -19,9 +19,22 @@
         <section class="video-section">
             <h2>Watch our Launch Announcement</h2>
             <iframe id="ytplayer" src="https://www.youtube.com/embed/TDnJbXu_L0s" frameborder="0" allowfullscreen></iframe>
-            <div style="text-align: center;">
-                <button>Be a Super Backer</button>
-                <a href="https://www.kickstarter.com/projects/scarlyt/scarlyt-the-card-and-dice-party-game" class="kickstarter-button" target="_blank">Support Us on Kickstarter</a>
+            <div class="cta-group">
+              <a href="https://www.kickstarter.com/projects/scarlyt/…" class="cta-btn ks-btn" target="_blank">Support us on Kickstarter</a>
+              <button class="cta-btn sb-btn" id="superBackerBtn">Become a Super Backer</button>
+            </div>
+            <div id="sbModal" class="modal">
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Become a Super Backer 💎</h2>
+                <p>Enter your info below and we'll let you know when collector sets are available. Your pledge goes toward your purchase.</p>
+                <form id="sbForm">
+                  <input type="text" name="name" placeholder="Your Name" required>
+                  <input type="email" name="email" placeholder="Your Email" required>
+                  <textarea name="message" placeholder="Leave a note (optional)"></textarea>
+                  <button type="submit" class="sb-submit">Continue to Ko‑fi →</button>
+                </form>
+              </div>
             </div>
         </section>
 
@@ -148,4 +161,32 @@
         <p>&copy; 2024 Scarlyt. All rights reserved.</p>
     </footer>
 </body>
+<script>
+    // Show modal
+    document.getElementById('superBackerBtn').onclick = () => {
+      document.getElementById('sbModal').style.display = 'block';
+    };
+    // Close modal
+    document.querySelector('#sbModal .close').onclick = () => {
+      document.getElementById('sbModal').style.display = 'none';
+    };
+    // Outside click closes modal
+    window.onclick = e => {
+      if (e.target === document.getElementById('sbModal')) {
+        document.getElementById('sbModal').style.display = 'none';
+      }
+    };
+    // Form submit: capture info & redirect
+    document.getElementById('sbForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const data = {
+        name: e.target.name.value,
+        email: e.target.email.value,
+        message: e.target.message.value,
+      };
+      console.log('Super Backer Interest:', data);
+      // TODO: Send data to backend or email list here
+      window.location.href = "https://ko-fi.com/YOUR_KOFI_PAGE";
+    });
+</script>
 </html>
