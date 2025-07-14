@@ -30,10 +30,10 @@
                 <p>Enter your info below, then support us on Ko-Fi and we'll let you know when collector sets are available.</p>
                 <p class="formStatus"></p>
                 <form id="sbForm">
-                  <input type="text" name="name" placeholder="Your Name" required>
-                  <input type="email" name="email" placeholder="Your Email" required>
-                  <textarea name="message" placeholder="Leave a note (optional)"></textarea>
-                  <input type="text" name="website" placeholder="Website" class="hidden-honeypot" autocomplete="off">
+                  <input type="text" name="name" id="name" placeholder="Your Name" required>
+                  <input type="email" name="email" id="email" placeholder="Your Email" required>
+                  <textarea name="message" id="message" placeholder="Leave a note (optional)"></textarea>
+                  <input type="text" name="website" id="website" placeholder="Website" class="hidden-honeypot" autocomplete="off">
                   <button type="submit" class="sb-submit">Continue to Ko‑fi →</button>
                 </form>
               </div>
@@ -202,12 +202,12 @@
         // Add an event listener for form submission
         subscriberForm.addEventListener('submit', async (e) => {
             e.preventDefault(); // Prevent default form submission
-              const honeypot = document.getElementByName('website').value;
+              const honeypot = document.getElementById('website').value;
               if (honeypot.trim() !== "") return;
 
-            const name = document.getElementByName('name').value;
-            const email = document.getElementByName('email').value;
-            const message = document.getElementByName('message').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
 
             try {
                 // Add a new document to the "subscribers" collection
