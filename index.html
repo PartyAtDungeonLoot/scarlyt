@@ -163,6 +163,20 @@
     </footer>
 </body>
 <script>
+    // Show modal
+    document.getElementById('superBackerBtn').onclick = () => {
+      document.getElementById('sbModal').style.display = 'block';
+    };
+    // Close modal
+    document.querySelector('#sbModal .close').onclick = () => {
+      document.getElementById('sbModal').style.display = 'none';
+    };
+    // Outside click closes modal
+    window.onclick = e => {
+      if (e.target === document.getElementById('sbModal')) {
+        document.getElementById('sbModal').style.display = 'none';
+      }
+    };
     document.getElementById('sbForm').addEventListener('submit', e => {
       e.preventDefault();
     
