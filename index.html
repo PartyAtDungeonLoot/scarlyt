@@ -217,13 +217,11 @@
                     message: message,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp() // Adds a server-generated timestamp
                 });
-
-              console.log('Success!', response);
               window.location.href = "https://ko-fi.com/dungeonloot";
-                subscriberForm.reset(); // Clear the form
+            subscriberForm.reset(); // Clear the form
             } catch (error) {
                 console.error("Error adding document: ", error);
-                formStatus.textContent = 'Oops! Something went wrong. Please try again.';
+                formStatus.innerHTML = 'Oops! Something went wrong. Please try again.';
             }
         });
 </script>
