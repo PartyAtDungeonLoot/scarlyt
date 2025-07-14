@@ -379,6 +379,7 @@ footer p {
   border-radius: 8px;
   max-width: 400px;
   position: relative;
+text-color: black;
 }
 .close {
   position: absolute;
