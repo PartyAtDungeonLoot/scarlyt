@@ -182,33 +182,24 @@
     
       const form = e.target;
       const honeypot = form.website.value;
+      if (honeypot.trim() !== "") return;
     
-      // Bot detected
-      if (honeypot.trim() !== "") {
-        return;
-      }
-    
-      const data = {
+      const params = new URLSearchParams({
         name: form.name.value,
         email: form.email.value,
         message: form.message.value
-      };
-    
-      fetch('https://script.google.com/macros/s/AKfycbyks5XCQjZ9BvElw_U8tF2uedwylDDzPdH6-mLaj3L9eApmt9z5X6t807dHT8BVQsmX/exec', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-      })
-      .then(res => res.json())
-      .then(response => {
-        console.log('Success!', response);
-        window.location.href = "https://ko-fi.com/dungeonloot";
-      })
-      .catch(err => {
-        console.error('Error!', err.message);
-        alert("Oops! Something went wrong.");
       });
+    
+      fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?' + params.toString())
+        .then(res => res.json())
+        .then(response => {
+          console.log('Success!', response);
+          window.location.href = "https://ko-fi.com/dungeonloot";
+        })
+        .catch(err => {
+          console.error('Error!', err.message);
+          alert("Oops! Something went wrong.");
+        });
     });
-
 </script>
 </html>
