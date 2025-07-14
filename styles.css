@@ -423,3 +423,10 @@ color: black;
 }
 .ks-btn { background: #2b8eff; }    /* Kickstarter blue */
 .sb-btn { background: #cc3e7e; }    /* Super Backer magenta */
+
+.hidden-honeypot {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+  left: -9999px;
+}
