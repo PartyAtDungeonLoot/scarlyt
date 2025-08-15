@@ -430,3 +430,9 @@ color: black;
   position: absolute;
   left: -9999px;
 }
+
+  #ytplayer {
+    width: 100%;       /* Makes it fill its container's width */
+    height: auto;      /* Keeps height flexible */
+    aspect-ratio: 16 / 9; /* Maintains proper video proportions */
+  }
