@@ -1,9 +1,9 @@
 :root {
-  --primary-color: #FE282D; /* Scarlyt red */
-  --secondary-color: #2b8eff; /* Kickstarter blue */
-  --background-color: #000; /* Dark gray */
-  --text-color: #fff; /* White */
-  --card-background: #222; /* Slightly lighter gray */
+  --primary-color: #e63946; /* Updated Scarlyt red */
+  --secondary-color: #f4a261; /* Golden hue from logo */
+  --background-color: #1d1d1d; /* Darker background */
+  --text-color: #fdf6e3; /* Warm off-white */
+  --card-background: linear-gradient(135deg, #e63946, #f4a261); /* Gradient inspired by logo */
   --hover-brightness: 1.1;
 }
 
@@ -76,11 +76,11 @@ header .banner img {
 }
 
 .ks-btn {
-  background: var(--secondary-color);
+  background: var(--primary-color);
 }
 
 .sb-btn {
-  background: #cc3e7e; /* Super Backer magenta */
+  background: var(--secondary-color); /* Super Backer magenta */
 }
 
 /* About Section */
@@ -134,7 +134,7 @@ header .banner img {
 .whats-in-the-box h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #f04e30;
+  color: var(--primary-color);
 }
 
 .box-items {
@@ -184,7 +184,7 @@ header .banner img {
 
 .meet-the-team h2,
 .meet-the-team h3 {
-  color: #f04e30;
+  color: var(--primary-color);
 }
 
 .meet-the-team h2 {
@@ -426,7 +426,7 @@ footer p {
 }
 
 .sb-submit {
-  background: #cc3e7e;
+  background: var(--primary-color);
   color: #fff;
   border: none;
   padding: 0.75rem;
