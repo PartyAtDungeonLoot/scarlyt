@@ -9,13 +9,11 @@
     <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
-    <!--
     <header>
         <div class="banner">
             <img src="logo.jpg" alt="Scarlyt Logo">
         </div>
     </header>
-    -->
     <div class="container">
         <section class="video-section">
             <h2>Watch our Launch Announcement</h2>
@@ -29,11 +27,11 @@
               <a href="https://www.kickstarter.com/projects/scarlyt/scarlyt-the-card-and-dice-party-game/" class="cta-btn ks-btn" target="_blank">Support us on Kickstarter</a>
               <button class="cta-btn sb-btn" id="superBackerBtn">Become a Super Backer</button>
             </div>
-            <div id="sbModal" class="modal">
+            <div id="sbModal" class="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
               <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Become a Super Backer 💎</h2>
-                <p>Enter your info below, then support us on Ko-Fi and we'll let you know when collector sets are available.</p>
+                <span class="close" aria-label="Close Modal">&times;</span>
+                <h2 id="modalTitle">Become a Super Backer 💎</h2>
+                <p id="modalDescription">Enter your info below, then support us on Ko-Fi and we'll let you know when collector sets are available.</p>
                 <p class="formStatus"></p>
                 <form id="sbForm">
                   <input type="text" name="name" id="name" placeholder="Your Name" required>
