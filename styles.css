@@ -3,7 +3,7 @@
   --secondary-color: #f4a261; /* Golden hue from logo */
   --background-color: #000; /* Darker background */
   --text-color: #fdf6e3; /* Warm off-white */
-  --card-background: linear-gradient(135deg, #000 80%, #f4a261 20%); /* Gradient inspired by logo */
+  --card-background: #000;
   --hover-brightness: 1.1;
 }
 
