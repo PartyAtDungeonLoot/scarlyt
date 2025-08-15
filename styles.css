@@ -3,7 +3,7 @@
   --secondary-color: #f4a261; /* Golden hue from logo */
   --background-color: #000; /* Darker background */
   --text-color: #fdf6e3; /* Warm off-white */
-  --card-background: linear-gradient(135deg, #f4a261, #000); /* Gradient inspired by logo */
+  --card-background: linear-gradient(135deg, #000 80%, #f4a261 20%); /* Gradient inspired by logo */
   --hover-brightness: 1.1;
 }
 
@@ -64,7 +64,7 @@ header .banner img {
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 8px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
   color: var(--background-color);
   text-decoration: none;
@@ -107,13 +107,13 @@ header .banner img {
   width: 100%;
   max-width: 600px; /* Set a maximum width */
   min-width: 200px; /* Set a minimum width */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 8px var(--secondary-color); /* Gold drop shadow */
   box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .about-section .card h3 {
   margin-top: 0;
-  color: var(--background-color);
+  color: var(--text-color);
 }
 
 .about-section .card p {
