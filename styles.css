@@ -1,378 +1,404 @@
+:root {
+  --primary-color: #f04e30; /* Scarlyt red */
+  --secondary-color: #2b8eff; /* Kickstarter blue */
+  --background-color: #111; /* Dark gray */
+  --text-color: #fff; /* White */
+  --card-background: #222; /* Slightly lighter gray */
+  --hover-brightness: 1.1;
+}
+
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: #fff;
-    background: #000;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--background-color);
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Header Styles */
 header .banner {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    background: #000;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: var(--background-color);
 }
 
 header .banner img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 /* Container */
 .container {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 1rem;
-    box-sizing: border-box; /* Ensure padding is included in the width */
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 /* Video Section */
 .video-section {
-    margin: 2rem 0;
+  margin: 2rem 0;
 }
 
 .video-section iframe {
-    width: 100%;
-    height: 450px;
-    border: none;
+  width: 100%;
+  height: 450px;
+  border: none;
 }
 
-.kickstarter-button {
-    display: inline-block;
-    margin: 1.5rem 0;
-    padding: 1rem 2rem;
-    background-color: #b22222;
-    color: white;
-    font-size: 1.2rem;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-    max-width: 100%; /* Prevent button from exceeding viewport width */
+.cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
 }
 
-.kickstarter-button:hover {
-    background-color: #d63b3b;
+.cta-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: filter 0.3s ease;
+}
+
+.cta-btn:hover {
+  filter: brightness(var(--hover-brightness));
+}
+
+.ks-btn {
+  background: var(--secondary-color);
+}
+
+.sb-btn {
+  background: #cc3e7e; /* Super Backer magenta */
 }
 
 /* About Section */
 .about-section {
-    margin: 2rem 0;
-    text-align: center;
-    padding: 0 1rem; /* Add padding to prevent overflow */
-    box-sizing: border-box; /* Ensure padding is included in the width */
+  margin: 2rem 0;
+  text-align: center;
+  padding: 0 1rem; /* Add padding to prevent overflow */
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .about-section .content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    justify-items: center;
-    align-items: center;
-    max-width: 100%; /* Prevent content from exceeding viewport width */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  max-width: 100%; /* Prevent content from exceeding viewport width */
 }
 
 .about-section .card {
-    background: #111;
-    padding: 1.5rem;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 600px; /* Set a maximum width */
-    min-width: 200px; /* Set a minimum width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    box-sizing: border-box; /* Ensure padding is included in the width */
+  background: var(--card-background);
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px; /* Set a maximum width */
+  min-width: 200px; /* Set a minimum width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box; /* Ensure padding is included in the width */
 }
 
 .about-section .card h3 {
-    margin-top: 0;
-    color: #f04e30;
+  margin-top: 0;
+  color: var(--primary-color);
 }
 
 .about-section .card p {
-    margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 
 /* What's in the Box Section */
 .whats-in-the-box {
-    text-align: center;
-    margin: 2rem 0;
-    padding: 2rem 1rem; /* Add padding to prevent overflow */
-    background-color: #111;
-    border-radius: 10px;
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    max-width: 100%; /* Prevent section from exceeding viewport width */
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem 1rem; /* Add padding to prevent overflow */
+  background-color: #111;
+  border-radius: 10px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  max-width: 100%; /* Prevent section from exceeding viewport width */
 }
 
 .whats-in-the-box h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #f04e30;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #f04e30;
 }
 
 .box-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem; /* Ensure consistent gap between items */
-    justify-items: center;
-    align-items: center;
-    max-width: 100%; /* Prevent items from exceeding viewport width */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem; /* Ensure consistent gap between items */
+  justify-items: center;
+  align-items: center;
+  max-width: 100%; /* Prevent items from exceeding viewport width */
 }
 
 .box-item {
-    text-align: center;
-    padding: 1rem;
-    background-color: #222;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    width: 100%;
-    max-width: 300px; /* Set a maximum width */
-    min-width: 200px; /* Set a minimum width */
+  text-align: center;
+  padding: 1rem;
+  background-color: #222;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  width: 100%;
+  max-width: 300px; /* Set a maximum width */
+  min-width: 200px; /* Set a minimum width */
 }
 
 .box-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 1rem;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1rem;
 }
 
 .box-item p {
-    font-size: 1rem;
-    color: #ddd;
-    margin: 0;
+  font-size: 1rem;
+  color: #ddd;
+  margin: 0;
 }
 
 /* Meet the Team Section */
 .meet-the-team {
-    margin: 2rem 0;
-    text-align: center;
-    padding: 2rem 1rem; /* Add padding to prevent overflow */
-    background-color: #111;
-    border-radius: 10px;
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    max-width: 100%; /* Prevent section from exceeding viewport width */
+  margin: 2rem 0;
+  text-align: center;
+  padding: 2rem 1rem; /* Add padding to prevent overflow */
+  background-color: #111;
+  border-radius: 10px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  max-width: 100%; /* Prevent section from exceeding viewport width */
 }
 
-.meet-the-team h2, .meet-the-team h3 {
-    color: #f04e30;
+.meet-the-team h2,
+.meet-the-team h3 {
+  color: #f04e30;
 }
 
 .meet-the-team h2 {
-    font-size: 2rem; /* Match the font size of the "What's in the Box" section */
+  font-size: 2rem; /* Match the font size of the "What's in the Box" section */
 }
 
 .team-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    justify-items: center;
-    align-items: center;
-    max-width: 100%; /* Prevent items from exceeding viewport width */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  align-items: center;
+  max-width: 100%; /* Prevent items from exceeding viewport width */
 }
 
 .team-item {
-    text-align: center;
-    padding: 1rem;
-    background-color: #222;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    max-width: 100%; /* Prevent item from exceeding viewport width */
+  text-align: center;
+  padding: 1rem;
+  background-color: #222;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  max-width: 100%; /* Prevent item from exceeding viewport width */
 }
 
 .team-item a {
-    text-decoration: none;
-    color: white;
-    text-align: center;
-    display: block;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  display: block;
 }
 
 .team-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .team-item p {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .developers {
-    text-align: center;
+  text-align: center;
 }
 
 .developers-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 600px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .developers p {
-    max-width: 600px;
-    margin: 0.5rem 0;
+  max-width: 600px;
+  margin: 0.5rem 0;
 }
 
 /* Footer Styles */
 footer {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem; /* Add padding to prevent overflow */
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    max-width: 100%; /* Prevent footer from exceeding viewport width */
+  background: var(--background-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 2rem 1rem; /* Add padding to prevent overflow */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  max-width: 100%; /* Prevent footer from exceeding viewport width */
 }
 
 footer .social-icons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-    max-width: 100%; /* Prevent icons from exceeding viewport width */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  max-width: 100%; /* Prevent icons from exceeding viewport width */
 }
 
 footer .social-icons img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
 }
 
 footer .social-icons img:hover {
-    transform: scale(1.1);
+  transform: scale(var(--hover-brightness));
 }
 
 footer .social-icons a {
-    display: inline-block;
+  display: inline-block;
 }
 
 footer p {
-    margin: 0;
+  margin: 0;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .about-section .content {
-        flex-direction: column;
-        align-items: center;
-    }
+  .about-section .content {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .about-section .card {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
+  .about-section .card {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 
-    .whats-in-the-box {
-        padding: 1rem;
-    }
+  .whats-in-the-box {
+    padding: 1rem;
+  }
 
-    .box-items {
-        grid-template-columns: 1fr;
-    }
+  .box-items {
+    grid-template-columns: 1fr;
+  }
 
-    .footer .social-icons {
-        flex-direction: column;
-        align-items: center;
-    }
+  .footer .social-icons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {
-    .about-section .content {
-        flex-direction: column;
-        align-items: center;
-    }
+  .about-section .content {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .about-section .card {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
+  .about-section .card {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 
-    .whats-in-the-box {
-        padding: 1rem;
-    }
+  .whats-in-the-box {
+    padding: 1rem;
+  }
 
-    .box-items {
-        grid-template-columns: 1fr;
-    }
+  .box-items {
+    grid-template-columns: 1fr;
+  }
 
-    .footer .social-icons {
-        flex-direction: column;
-        align-items: center;
-    }
+  .footer .social-icons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 320px) {
-    .about-section .content {
-        flex-direction: column;
-        align-items: center;
-        padding: 0 1rem;
-    }
+  .about-section .content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+  }
 
-    .about-section .card {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
+  .about-section .card {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 
-    .whats-in-the-box {
-        padding: 1rem;
-    }
+  .whats-in-the-box {
+    padding: 1rem;
+  }
 
-    .box-items {
-        grid-template-columns: 1fr;
-    }
+  .box-items {
+    grid-template-columns: 1fr;
+  }
 
-    .footer .social-icons {
-        flex-direction: column;
-        align-items: center;
-    }
+  .footer .social-icons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 280px) {
-    .about-section .content {
-        flex-direction: column;
-        align-items: center;
-        padding: 0 0.5rem;
-    }
+  .about-section .content {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0.5rem;
+  }
 
-    .about-section .card {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
+  .about-section .card {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 
-    .whats-in-the-box {
-        padding: 1rem;
-    }
+  .whats-in-the-box {
+    padding: 1rem;
+  }
 
-    .box-items {
-        grid-template-columns: 1fr;
-    }
+  .box-items {
+    grid-template-columns: 1fr;
+  }
 
-    .footer .social-icons {
-        flex-direction: column;
-        align-items: center;
-    }
+  .footer .social-icons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .modal {
   display: none;
   position: fixed;
   z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-color: black;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: black;
 }
+
 .modal-content {
   background: #fff;
   padding: 2rem;
@@ -381,12 +407,15 @@ color: black;
   max-width: 400px;
   position: relative;
 }
+
 .close {
   position: absolute;
-  top: 1rem; right: 1rem;
+  top: 1rem;
+  right: 1rem;
   font-size: 1.2rem;
   cursor: pointer;
 }
+
 .modal-content input,
 .modal-content textarea {
   width: 100%;
@@ -395,6 +424,7 @@ color: black;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
+
 .sb-submit {
   background: #cc3e7e;
   color: #fff;
@@ -406,33 +436,8 @@ color: black;
   cursor: pointer;
 }
 
-.cta-group {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin: 2rem 0;
+#ytplayer {
+  width: 100%; /* Makes it fill its container's width */
+  height: auto; /* Keeps height flexible */
+  aspect-ratio: 16 / 9; /* Maintains proper video proportions */
 }
-.cta-btn {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  color: #fff;
-  text-decoration: none;
-}
-.ks-btn { background: #2b8eff; }    /* Kickstarter blue */
-.sb-btn { background: #cc3e7e; }    /* Super Backer magenta */
-
-.hidden-honeypot {
-  display: none;
-  visibility: hidden;
-  position: absolute;
-  left: -9999px;
-}
-
-  #ytplayer {
-    width: 100%;       /* Makes it fill its container's width */
-    height: auto;      /* Keeps height flexible */
-    aspect-ratio: 16 / 9; /* Maintains proper video proportions */
-  }
