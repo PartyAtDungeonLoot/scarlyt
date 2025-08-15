@@ -1,7 +1,7 @@
 :root {
-  --primary-color: #f04e30; /* Scarlyt red */
+  --primary-color: #FE282D; /* Scarlyt red */
   --secondary-color: #2b8eff; /* Kickstarter blue */
-  --background-color: #111; /* Dark gray */
+  --background-color: #000; /* Dark gray */
   --text-color: #fff; /* White */
   --card-background: #222; /* Slightly lighter gray */
   --hover-brightness: 1.1;
