@@ -3,7 +3,7 @@
   --secondary-color: #f4a261; /* Golden hue from logo */
   --background-color: #1d1d1d; /* Darker background */
   --text-color: #fdf6e3; /* Warm off-white */
-  --card-background: linear-gradient(135deg, #e63946, #f4a261); /* Gradient inspired by logo */
+  --card-background: linear-gradient(135deg, #000, #f4a261); /* Gradient inspired by logo */
   --hover-brightness: 1.1;
 }
 
@@ -113,7 +113,7 @@ header .banner img {
 
 .about-section .card h3 {
   margin-top: 0;
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .about-section .card p {
