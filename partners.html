@@ -423,6 +423,74 @@
       // await addDoc(collection(db, "partnerPlans"), payload);
       throw new Error("Firebase not configured yet.");
     }
+
+    // Add plan-based line item configurations
+    function applyPlan(planType) {
+      // Clear existing line items
+      tbody.innerHTML = '';
+
+      const months = {
+        basic: 12,
+        advanced: 6,
+        expert: 3
+      }[planType] || 0;
+
+      for (let i = 1; i <= months; i++) {
+        addRow({ month: i, product: 'Shirt', qty: 1, notes: `Plan ${planType} - Month ${i}` });
+      }
+
+      // Add Collector's Edition line item
+      addRow({ month: months, product: "Collector's Edition", qty: 1, notes: "Free with subscription" });
+      recalc();
+    }
+
+    // Add discount functionality
+    function applyDiscount(discountPercentage) {
+      const discountFactor = 1 - (discountPercentage / 100);
+
+      let tCost = 0, tRetail = 0, tProfit = 0;
+      tbody.querySelectorAll('tr').forEach(tr => {
+        const qty = Number(tr.querySelector('[data-col="qty"]').value || 0);
+        const product = tr.querySelector('[data-col="product"]').value;
+        const pb = PRICEBOOK[product] || { cost: 0, retail: 0, margin: 0 };
+        const lineCost = qty * pb.cost * discountFactor;
+        const lineRetail = qty * pb.retail;
+        const lineProfit = lineRetail - lineCost;
+
+        tCost += lineCost;
+        tRetail += lineRetail;
+        tProfit += lineProfit;
+      });
+
+      sumCost.textContent = fmt(tCost);
+      sumRetail.textContent = fmt(tRetail);
+      sumProfit.textContent = fmt(tProfit);
+      kpiCost.textContent = fmt(tCost);
+      kpiRetail.textContent = fmt(tRetail);
+      kpiProfit.textContent = fmt(tProfit);
+    }
+
+    // Wire plan selection
+    const planTypeSelect = document.getElementById('planType');
+    planTypeSelect.addEventListener('change', () => {
+      const planType = planTypeSelect.value;
+      applyPlan(planType);
+    });
+
+    // Wire discount input
+    const discountInput = document.createElement('input');
+    discountInput.type = 'number';
+    discountInput.min = 0;
+    discountInput.max = 100;
+    discountInput.placeholder = 'Discount %';
+    discountInput.addEventListener('input', () => {
+      const discountPercentage = Number(discountInput.value) || 0;
+      applyDiscount(discountPercentage);
+    });
+
+    // Add discount input to the footer actions
+    const footerActions = document.querySelector('.footer-actions');
+    footerActions.insertBefore(discountInput, footerActions.firstChild);
   </script>
 </body>
 </html>
