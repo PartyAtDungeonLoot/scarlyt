@@ -390,7 +390,7 @@
 
     document.getElementById('exportCsvBtn').addEventListener('click', () => {
         const data = gatherData();
-        const storeName = `${data.meta.storeName} Partner Plan` || 'Partner Plan Demo'; // Default to 'partner_plan' if storeName is empty
+        const storeName = data.meta.storeName || 'Partner Plan Demo'; // Default to 'Partner Plan Demo' if storeName is empty
         const sanitizedStoreName = storeName.replace(/[^a-zA-Z0-9_-]/g, '_'); // Sanitize the store name for file systems
         const filename = `${sanitizedStoreName}_partner_plan.csv`;
         download(filename, toCSV(data), 'text/csv');
