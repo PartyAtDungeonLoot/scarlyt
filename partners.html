@@ -110,8 +110,12 @@
           <div>
             <label for="planType">Plan Type</label>
             <select id="planType" name="planType">
-              <option value="subscription">Subscription (Basic/Advanced/Expert or custom)</option>
-              <option value="scarlyt-only">Scarlyt-Only</option>
+              <option value="basic">Basic</option>
+              <option value="advanced">Advanced</option>
+              <option value="expert">Expert</option>
+              <option value="scarlytPreOrder">Scarlyt Pre-Order</option>
+              <option value="custom">Custom</option>
+              <option value="marketingOnly">Marketing-Only</option>
             </select>
           </div>
         </div>
@@ -145,6 +149,7 @@
               <option value="Scarlyt">Scarlyt</option>
               <option value="Mug">Mug</option>
               <option value="Poster/Signage">Poster/Signage</option>
+              <option value="Collector's Edition">Collector's Edition</option>
             </select>
           </div>
           <div>
@@ -491,6 +496,16 @@
     // Add discount input to the footer actions
     const footerActions = document.querySelector('.footer-actions');
     footerActions.insertBefore(discountInput, footerActions.firstChild);
+
+    // Update plan type options
+    planTypeSelect.innerHTML = `
+      <option value="basic">Basic</option>
+      <option value="advanced">Advanced</option>
+      <option value="expert">Expert</option>
+      <option value="scarlytPreOrder">Scarlyt Pre-Order</option>
+      <option value="custom">Custom</option>
+      <option value="marketingOnly">Marketing-Only</option>
+    `;
   </script>
 </body>
 </html>
