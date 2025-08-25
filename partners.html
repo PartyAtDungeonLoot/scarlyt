@@ -350,15 +350,15 @@
       return { meta: form, items };
     }
 
-    function toCSV({meta, items}){
-      const head = ['Month','Product','Qty','Your Cost (ea)','Total Cost','Retail (ea)','Total Retail','Store Profit','Notes'];
+    function toCSV({meta, items}) {
+      const head = ['Month', 'Product', 'Qty', 'Your Cost (ea)', 'Total Cost', 'Retail (ea)', 'Total Retail', 'Store Profit', 'Notes'];
       const rows = [
-        ['Store Name:', meta.storeName || '', 'Contact Name:', meta.contactName || '', 'Email:', meta.contactEmail || '', 'Phone:', meta.phone || '', 'City:', meta.city || '', 'Plan Type:', meta.planType || ''].join(','),
+        `"Store Name:","${meta.storeName || ''}","Contact Name:","${meta.contactName || ''}","Email:","${meta.contactEmail || ''}","Phone:","${meta.phone || ''}","City:","${(meta.city || '').replace(/"/g, '""')}","Plan Type:","${meta.planType || ''}"`,
         head.join(',')
       ];
-      items.forEach(it=>{
-        const pb = PRICEBOOK[it.product]||{cost:0, retail:0, margin:0};
-        const lineCost = it.qty*pb.cost, lineRetail = it.qty*pb.retail, lineProfit = it.qty*pb.margin;
+      items.forEach(it => {
+        const pb = PRICEBOOK[it.product] || { cost: 0, retail: 0, margin: 0 };
+        const lineCost = it.qty * pb.cost, lineRetail = it.qty * pb.retail, lineProfit = it.qty * pb.margin;
         const r = [
           it.month,
           it.product,
@@ -368,28 +368,32 @@
           pb.retail.toFixed(2),
           lineRetail.toFixed(2),
           lineProfit.toFixed(2),
-          (it.notes||'').replace(/,/g,';')
+          `"${(it.notes || '').replace(/"/g, '""')}"`
         ];
         rows.push(r.join(','));
       });
       return rows.join('\n');
     }
 
-    function download(filename, content, mime='text/plain'){
-      const blob = new Blob([content], {type:mime});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = filename;
-      a.click();
-      URL.revokeObjectURL(a.href);
+    function download(filename, content, mime = 'text/plain') {
+        const blob = new Blob([content], { type: mime });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(a.href);
     }
 
-    document.getElementById('exportJsonBtn').addEventListener('click', ()=>{
-      download(`dungeonloot_partner_plan.json`, JSON.stringify(gatherData(), null, 2), 'application/json');
+    document.getElementById('exportJsonBtn').addEventListener('click', () => {
+    download(`dungeonloot_partner_plan.json`, JSON.stringify(gatherData(), null, 2), 'application/json');
     });
 
-    document.getElementById('exportCsvBtn').addEventListener('click', ()=>{
-      download(`dungeonloot_partner_plan.csv`, toCSV(gatherData()), 'text/csv');
+    document.getElementById('exportCsvBtn').addEventListener('click', () => {
+        const data = gatherData();
+        const storeName = `${data.meta.storeName} Partner Plan` || 'Partner Plan Demo'; // Default to 'partner_plan' if storeName is empty
+        const sanitizedStoreName = storeName.replace(/[^a-zA-Z0-9_-]/g, '_'); // Sanitize the store name for file systems
+        const filename = `${sanitizedStoreName}_partner_plan.csv`;
+        download(filename, toCSV(data), 'text/csv');
     });
 
     // --- Firebase stub (add your config + write) ---
