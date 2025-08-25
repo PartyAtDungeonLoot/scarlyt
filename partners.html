@@ -351,18 +351,15 @@
     }
 
     function toCSV({meta, items}){
-      const head = ['Store Name','Contact Name','Email','Phone','City','Plan Type','Month','Product','Qty','Your Cost (ea)','Total Cost','Retail (ea)','Total Retail','Store Profit','Notes'];
-      const rows = [head.join(',')];
+      const head = ['Month','Product','Qty','Your Cost (ea)','Total Cost','Retail (ea)','Total Retail','Store Profit','Notes'];
+      const rows = [
+        ['Store Name:', meta.storeName || '', 'Contact Name:', meta.contactName || '', 'Email:', meta.contactEmail || '', 'Phone:', meta.phone || '', 'City:', meta.city || '', 'Plan Type:', meta.planType || ''].join(','),
+        head.join(',')
+      ];
       items.forEach(it=>{
         const pb = PRICEBOOK[it.product]||{cost:0, retail:0, margin:0};
         const lineCost = it.qty*pb.cost, lineRetail = it.qty*pb.retail, lineProfit = it.qty*pb.margin;
         const r = [
-          meta.storeName||'',
-          meta.contactName||'',
-          meta.contactEmail||'',
-          meta.phone||'',
-          meta.city||'',
-          meta.planType||'',
           it.month,
           it.product,
           it.qty,
