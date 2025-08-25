@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dungeon Loot • Partner Plan Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#131a22;
+      --panel-2:#0f151c;
+      --ink:#e8eef6;
+      --muted:#a9b6c6;
+      --accent:#7dd3fc;       /* cyan */
+      --accent-2:#93c5fd;     /* blue */
+      --accent-3:#f472b6;     /* pink */
+      --ok:#34d399;
+      --warn:#f59e0b;
+      --bad:#f87171;
+      --ring: 0 0 0 2px rgba(125,211,252,.35);
+      --radius:16px;
+      --radius-sm:10px;
+      --shadow: 0 10px 30px rgba(0,0,0,.5);
+    }
+    *{box-sizing:border-box}
+    html,body{background:var(--bg); color:var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; margin:0}
+    a{color:var(--accent)}
+    .wrap{max-width:1100px; margin:40px auto; padding:0 20px}
+    header{display:flex; align-items:center; gap:16px; margin-bottom:24px}
+    .logo{width:42px; height:42px; border-radius:10px; background:linear-gradient(135deg,var(--accent-2),var(--accent-3)); box-shadow:var(--shadow)}
+    h1{font-size:1.4rem; margin:0}
+    .card{background:linear-gradient(180deg, var(--panel), var(--panel-2)); border:1px solid #1e2a36; border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; margin-bottom:18px}
+    .grid{display:grid; gap:14px}
+    .g-2{grid-template-columns:repeat(2,1fr)}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    .g-4{grid-template-columns:repeat(4,1fr)}
+    @media (max-width:880px){ .g-2,.g-3,.g-4{grid-template-columns:1fr} }
+
+    label{display:block; font-size:.85rem; color:var(--muted); margin-bottom:6px}
+    input, select, textarea, button{
+      width:100%; background:#0b1219; color:var(--ink);
+      border:1px solid #213042; border-radius:12px; padding:12px 12px;
+      outline:none; transition:.2s ease; font-size:14px;
+    }
+    input:focus, select:focus, textarea:focus{ box-shadow:var(--ring); border-color:#2a4158 }
+    textarea{min-height:84px; resize:vertical}
+    .inline{display:flex; gap:10px}
+    .inline > * {flex:1}
+    .pill{font-size:.75rem; padding:.25rem .6rem; border-radius:999px; background:#0f1b25; border:1px solid #213042; color:var(--muted); display:inline-flex; gap:.4rem; align-items:center}
+    .btn{
+      background:linear-gradient(180deg, #0ea5e9, #0284c7);
+      border:0; color:white; font-weight:600; padding:12px 14px; border-radius:12px; cursor:pointer
+    }
+    .btn.secondary{ background:#101820; border:1px solid #223447; color:var(--ink) }
+    .btn.danger{ background:linear-gradient(180deg, #ef4444, #dc2626) }
+    .btn:disabled{opacity:.6; cursor:not-allowed}
+
+    table{width:100%; border-collapse:collapse; font-size:14px; overflow:hidden; border-radius:12px; border:1px solid #1e2a36}
+    thead th{background:#0e1620; color:#cde5ff; text-align:left; padding:10px; position:sticky; top:0}
+    tbody td{border-top:1px solid #1b2733; padding:8px}
+    tfoot td{padding:10px; background:#0f1720; border-top:1px solid #233040; font-weight:600}
+    .num{text-align:right}
+    .muted{color:var(--muted)}
+    .tag{display:inline-flex; align-items:center; gap:6px; font-size:.75rem; padding:.2rem .5rem; border-radius:999px; border:1px solid #2a3a4f; color:#cfe7ff}
+    .totals{display:flex; gap:14px; flex-wrap:wrap}
+    .kpi{flex:1 1 180px; background:#0f1620; border:1px solid #223243; border-radius:14px; padding:14px}
+    .kpi b{display:block; font-size:1.1rem}
+    .row-actions{display:flex; gap:8px}
+    .footer-actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .notice{font-size:.85rem; color:#c9d7e6}
+    .sep{height:1px; background:#1b2835; margin:16px 0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1>Partner Plan Builder</h1>
+        <div class="muted">Dungeon Loot • Build a subscription or Scarlyt-only package and save to Firebase</div>
+      </div>
+    </header>
+
+    <!-- Partner / Store section -->
+    <form id="planForm" class="grid">
+      <section class="card">
+        <div class="grid g-3">
+          <div>
+            <label for="storeName">Store Name</label>
+            <input id="storeName" name="storeName" placeholder="Danger Room, Reader Copies, etc." required />
+          </div>
+          <div>
+            <label for="contactName">Contact Name</label>
+            <input id="contactName" name="contactName" placeholder="Owner / buyer name" />
+          </div>
+          <div>
+            <label for="contactEmail">Email</label>
+            <input id="contactEmail" name="contactEmail" placeholder="owner@example.com" type="email" />
+          </div>
+        </div>
+        <div class="grid g-3" style="margin-top:10px">
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" placeholder="(xxx) xxx-xxxx" />
+          </div>
+          <div>
+            <label for="city">City / State</label>
+            <input id="city" name="city" placeholder="Muncie, IN" />
+          </div>
+          <div>
+            <label for="planType">Plan Type</label>
+            <select id="planType" name="planType">
+              <option value="subscription">Subscription (Basic/Advanced/Expert or custom)</option>
+              <option value="scarlyt-only">Scarlyt-Only</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Month / Line Items -->
+      <section class="card">
+        <div class="inline" style="align-items:flex-end">
+          <div>
+            <label for="monthInput">Month</label>
+            <select id="monthInput">
+              <option value="1">Month 1</option>
+              <option value="2">Month 2</option>
+              <option value="3">Month 3</option>
+              <option value="4">Month 4</option>
+              <option value="5">Month 5</option>
+              <option value="6">Month 6</option>
+              <option value="7">Month 7</option>
+              <option value="8">Month 8</option>
+              <option value="9">Month 9</option>
+              <option value="10">Month 10</option>
+              <option value="11">Month 11</option>
+              <option value="12">Month 12</option>
+            </select>
+          </div>
+          <div>
+            <label for="productInput">Product</label>
+            <select id="productInput">
+              <option value="Shirt">Shirt</option>
+              <option value="Hoodie">Hoodie</option>
+              <option value="Scarlyt">Scarlyt</option>
+              <option value="Mug">Mug</option>
+              <option value="Poster/Signage">Poster/Signage</option>
+            </select>
+          </div>
+          <div>
+            <label for="qtyInput">Quantity</label>
+            <input id="qtyInput" type="number" min="1" value="1" />
+          </div>
+        </div>
+        <div class="inline" style="margin-top:10px; align-items:flex-end">
+          <div>
+            <label for="notesInput">Notes / Design Choices</label>
+            <input id="notesInput" placeholder="Design A, colorway #2, mug art XYZ, etc." />
+          </div>
+          <div style="max-width:220px">
+            <button type="button" class="btn" id="addRowBtn">+ Add Line</button>
+          </div>
+        </div>
+
+        <div class="sep"></div>
+
+        <div class="pill" style="margin-bottom:10px">Line Items</div>
+        <div style="overflow:auto">
+          <table id="itemsTable" aria-describedby="itemsHelp">
+            <thead>
+              <tr>
+                <th style="width:90px">Month</th>
+                <th>Product</th>
+                <th class="num">Qty</th>
+                <th class="num">Your Cost (ea)</th>
+                <th class="num">Total Cost</th>
+                <th class="num">Retail (ea)</th>
+                <th class="num">Total Retail</th>
+                <th class="num">Store Profit</th>
+                <th>Notes</th>
+                <th style="width:120px">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4">Totals</td>
+                <td class="num" id="sumCost">$0.00</td>
+                <td></td>
+                <td class="num" id="sumRetail">$0.00</td>
+                <td class="num" id="sumProfit">$0.00</td>
+                <td colspan="2"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <!-- Summary / Actions -->
+      <section class="card">
+        <div class="grid g-3">
+          <div class="kpi">
+            <span class="muted">Total Your Cost</span>
+            <b id="kpiCost">$0.00</b>
+          </div>
+          <div class="kpi">
+            <span class="muted">Total Retail Value</span>
+            <b id="kpiRetail">$0.00</b>
+          </div>
+          <div class="kpi">
+            <span class="muted">Total Store Profit</span>
+            <b id="kpiProfit">$0.00</b>
+          </div>
+        </div>
+        <div class="sep"></div>
+        <div class="notice">
+          <span class="tag">Tip</span>
+          You can use this for subscriptions or Scarlyt-only orders. For subscriptions, mirror your Basic/Advanced/Expert quantities across Month 1–3 (or 12) and add a <em>Welcome Kit</em> as a zero-priced line if desired.
+        </div>
+        <div class="footer-actions" style="margin-top:12px">
+          <button type="button" class="btn secondary" id="exportJsonBtn">Export JSON</button>
+          <button type="button" class="btn secondary" id="exportCsvBtn">Export CSV</button>
+          <button type="submit" class="btn">Save to Firebase</button>
+        </div>
+      </section>
+    </form>
+  </div>
+
+  <script>
+    // --- MASTER PRICE TABLE (mirror of your Sheet A) ---
+    const PRICEBOOK = {
+      "Shirt":           { cost: 20.00, retail: 29.95, margin:  9.95 },
+      "Hoodie":          { cost: 30.00, retail: 44.95, margin: 14.95 },
+      "Scarlyt":         { cost: 20.00, retail: 50.00, margin: 30.00 },
+      "Mug":             { cost: 12.00, retail: 19.95, margin:  7.95 },
+      "Poster/Signage":  { cost:  5.00, retail:  0.00, margin: -5.00 } // treat as promo cost
+    };
+
+    // --- STATE ---
+    const rows = []; // {id, month, product, qty, notes}
+    let nextId = 1;
+
+    // --- ELEMENTS ---
+    const tbody = document.getElementById('tbody');
+    const sumCost = document.getElementById('sumCost');
+    const sumRetail = document.getElementById('sumRetail');
+    const sumProfit = document.getElementById('sumProfit');
+    const kpiCost = document.getElementById('kpiCost');
+    const kpiRetail = document.getElementById('kpiRetail');
+    const kpiProfit = document.getElementById('kpiProfit');
+
+    // --- HELPERS ---
+    const fmt = n => '$' + (Number(n)||0).toFixed(2);
+
+    function recalc(){
+      let tCost=0, tRetail=0, tProfit=0;
+      tbody.querySelectorAll('tr').forEach(tr=>{
+        const qty = Number(tr.querySelector('[data-col="qty"]').value || 0);
+        const product = tr.querySelector('[data-col="product"]').value;
+        const notes = tr.querySelector('[data-col="notes"]').value;
+        const pb = PRICEBOOK[product] || {cost:0, retail:0, margin:0};
+        const lineCost = qty * pb.cost;
+        const lineRetail = qty * pb.retail;
+        const lineProfit = qty * pb.margin;
+        tr.querySelector('[data-col="costEa"]').textContent = fmt(pb.cost);
+        tr.querySelector('[data-col="totalCost"]').textContent = fmt(lineCost);
+        tr.querySelector('[data-col="retailEa"]').textContent = fmt(pb.retail);
+        tr.querySelector('[data-col="totalRetail"]').textContent = fmt(lineRetail);
+        tr.querySelector('[data-col="profit"]').textContent = fmt(lineProfit);
+        tCost += lineCost; tRetail += lineRetail; tProfit += lineProfit;
+      });
+      sumCost.textContent = fmt(tCost);
+      sumRetail.textContent = fmt(tRetail);
+      sumProfit.textContent = fmt(tProfit);
+      kpiCost.textContent = fmt(tCost);
+      kpiRetail.textContent = fmt(tRetail);
+      kpiProfit.textContent = fmt(tProfit);
+    }
+
+    function addRow({month, product, qty, notes}){
+      const id = nextId++;
+      const tr = document.createElement('tr');
+      tr.dataset.id = id;
+
+      tr.innerHTML = `
+        <td><input data-col="month" type="number" min="1" max="12" value="${month}" /></td>
+        <td>
+          <select data-col="product">
+            ${Object.keys(PRICEBOOK).map(p=>`<option value="${p}" ${p===product?'selected':''}>${p}</option>`).join('')}
+          </select>
+        </td>
+        <td class="num"><input data-col="qty" type="number" min="1" value="${qty}"/></td>
+        <td class="num" data-col="costEa">$0.00</td>
+        <td class="num" data-col="totalCost">$0.00</td>
+        <td class="num" data-col="retailEa">$0.00</td>
+        <td class="num" data-col="totalRetail">$0.00</td>
+        <td class="num" data-col="profit">$0.00</td>
+        <td><input data-col="notes" value="${notes||''}" placeholder="Design notes"/></td>
+        <td>
+          <div class="row-actions">
+            <button type="button" class="btn secondary" data-action="dup">Duplicate</button>
+            <button type="button" class="btn danger" data-action="del">Delete</button>
+          </div>
+        </td>
+      `;
+      tbody.appendChild(tr);
+
+      // Wire listeners
+      tr.addEventListener('input', recalc);
+      tr.querySelector('[data-action="del"]').addEventListener('click', ()=>{ tr.remove(); recalc(); });
+      tr.querySelector('[data-action="dup"]').addEventListener('click', ()=>{
+        const m = tr.querySelector('[data-col="month"]').value;
+        const p = tr.querySelector('[data-col="product"]').value;
+        const q = tr.querySelector('[data-col="qty"]').value;
+        const n = tr.querySelector('[data-col="notes"]').value;
+        addRow({month:m, product:p, qty:q, notes:n});
+        recalc();
+      });
+
+      recalc();
+    }
+
+    // Prefill a helpful starter line
+    addRow({month:1, product:'Shirt', qty:3, notes:'Choose design A/B'});
+    addRow({month:1, product:'Scarlyt', qty:2, notes:'KS launch promo'});
+    addRow({month:2, product:'Hoodie', qty:1, notes:''});
+
+    // Add line UI
+    document.getElementById('addRowBtn').addEventListener('click', ()=>{
+      const month = document.getElementById('monthInput').value;
+      const product = document.getElementById('productInput').value;
+      const qty = document.getElementById('qtyInput').value;
+      const notes = document.getElementById('notesInput').value;
+      addRow({month, product, qty, notes});
+      document.getElementById('notesInput').value='';
+    });
+
+    // Export helpers
+    function gatherData(){
+      const form = Object.fromEntries(new FormData(document.getElementById('planForm')).entries());
+      const items = [];
+      tbody.querySelectorAll('tr').forEach(tr=>{
+        items.push({
+          month: Number(tr.querySelector('[data-col="month"]').value||0),
+          product: tr.querySelector('[data-col="product"]').value,
+          qty: Number(tr.querySelector('[data-col="qty"]').value||0),
+          notes: tr.querySelector('[data-col="notes"]').value,
+        });
+      });
+      return { meta: form, items };
+    }
+
+    function toCSV({meta, items}){
+      const head = ['Store Name','Contact Name','Email','Phone','City','Plan Type','Month','Product','Qty','Your Cost (ea)','Total Cost','Retail (ea)','Total Retail','Store Profit','Notes'];
+      const rows = [head.join(',')];
+      items.forEach(it=>{
+        const pb = PRICEBOOK[it.product]||{cost:0, retail:0, margin:0};
+        const lineCost = it.qty*pb.cost, lineRetail = it.qty*pb.retail, lineProfit = it.qty*pb.margin;
+        const r = [
+          meta.storeName||'',
+          meta.contactName||'',
+          meta.contactEmail||'',
+          meta.phone||'',
+          meta.city||'',
+          meta.planType||'',
+          it.month,
+          it.product,
+          it.qty,
+          pb.cost.toFixed(2),
+          lineCost.toFixed(2),
+          pb.retail.toFixed(2),
+          lineRetail.toFixed(2),
+          lineProfit.toFixed(2),
+          (it.notes||'').replace(/,/g,';')
+        ];
+        rows.push(r.join(','));
+      });
+      return rows.join('\n');
+    }
+
+    function download(filename, content, mime='text/plain'){
+      const blob = new Blob([content], {type:mime});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    document.getElementById('exportJsonBtn').addEventListener('click', ()=>{
+      download(`dungeonloot_partner_plan.json`, JSON.stringify(gatherData(), null, 2), 'application/json');
+    });
+
+    document.getElementById('exportCsvBtn').addEventListener('click', ()=>{
+      download(`dungeonloot_partner_plan.csv`, toCSV(gatherData()), 'text/csv');
+    });
+
+    // --- Firebase stub (add your config + write) ---
+    // 1) Include Firebase scripts before this block (v9+ modular recommended).
+    // 2) Replace saveToFirebase() with your Firestore/RTDB call.
+    document.getElementById('planForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const payload = gatherData();
+      try{
+        await saveToFirebase(payload);  // <-- implement below
+        alert('Saved to Firebase!');
+      }catch(err){
+        console.error(err);
+        alert('Could not save. Check console for details.');
+      }
+    });
+
+    async function saveToFirebase(payload){
+      // TODO: implement with Firebase SDK (example for Firestore):
+      // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      // import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      //
+      // const firebaseConfig = { /* your config */ };
+      // const app = initializeApp(firebaseConfig);
+      // const db = getFirestore(app);
+      // payload._createdAt = new Date().toISOString();
+      // await addDoc(collection(db, "partnerPlans"), payload);
+      throw new Error("Firebase not configured yet.");
+    }
+  </script>
+</body>
+</html>
