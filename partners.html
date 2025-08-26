@@ -343,42 +343,82 @@
     });
 
     // Export helpers
-    function gatherData(){
+    function gatherData() {
       const form = Object.fromEntries(new FormData(document.getElementById('planForm')).entries());
       const items = [];
-      tbody.querySelectorAll('tr').forEach(tr=>{
+      let tCost = 0, tRetail = 0, tProfit = 0;
+    
+      tbody.querySelectorAll('tr').forEach(tr => {
+        const qty = Number(tr.querySelector('[data-col="qty"]').value || 0);
+        const product = tr.querySelector('[data-col="product"]').value;
+        const notes = tr.querySelector('[data-col="notes"]').value;
+        const pb = PRICEBOOK[product] || { cost: 0, retail: 0, margin: 0 };
+        const lineCost = qty * pb.cost;
+        const lineRetail = qty * pb.retail;
+        const lineProfit = qty * pb.margin;
+    
+        tCost += lineCost;
+        tRetail += lineRetail;
+        tProfit += lineProfit;
+    
         items.push({
-          month: Number(tr.querySelector('[data-col="month"]').value||0),
-          product: tr.querySelector('[data-col="product"]').value,
-          qty: Number(tr.querySelector('[data-col="qty"]').value||0),
-          notes: tr.querySelector('[data-col="notes"]').value,
+          month: Number(tr.querySelector('[data-col="month"]').value || 0),
+          product,
+          qty,
+          notes,
+          costEach: pb.cost,
+          totalCost: lineCost,
+          retailEach: pb.retail,
+          totalRetail: lineRetail,
+          profit: lineProfit,
         });
       });
-      return { meta: form, items };
+    
+      const discountPercentage = Number(document.querySelector('input[placeholder="Discount %"]').value || 0);
+      const discountFactor = 1 - (discountPercentage / 100);
+      const discountedCost = tCost * discountFactor;
+      const discountedProfit = tProfit + (tCost - discountedCost);
+    
+      return {
+        meta: form,
+        items,
+        totals: {
+          originalCost: tCost,
+          discountedCost,
+          originalProfit: tProfit,
+          discountedProfit,
+          totalRetail: tRetail,
+        },
+      };
     }
 
-    function toCSV({meta, items}) {
+    function toCSV({ meta, items, totals }) {
       const head = ['Month', 'Product', 'Qty', 'Your Cost (ea)', 'Total Cost', 'Retail (ea)', 'Total Retail', 'Store Profit', 'Notes'];
       const rows = [
         `"Store Name:","${meta.storeName || ''}","Contact Name:","${meta.contactName || ''}","Email:","${meta.contactEmail || ''}","Phone:","${meta.phone || ''}","City:","${(meta.city || '').replace(/"/g, '""')}","Plan Type:","${meta.planType || ''}"`,
-        head.join(',')
+        head.join(','),
       ];
+    
       items.forEach(it => {
-        const pb = PRICEBOOK[it.product] || { cost: 0, retail: 0, margin: 0 };
-        const lineCost = it.qty * pb.cost, lineRetail = it.qty * pb.retail, lineProfit = it.qty * pb.margin;
         const r = [
           it.month,
           it.product,
           it.qty,
-          pb.cost.toFixed(2),
-          lineCost.toFixed(2),
-          pb.retail.toFixed(2),
-          lineRetail.toFixed(2),
-          lineProfit.toFixed(2),
-          `"${(it.notes || '').replace(/"/g, '""')}"`
+          it.costEach.toFixed(2),
+          it.totalCost.toFixed(2),
+          it.retailEach.toFixed(2),
+          it.totalRetail.toFixed(2),
+          it.profit.toFixed(2),
+          `"${(it.notes || '').replace(/"/g, '""')}"`,
         ];
         rows.push(r.join(','));
       });
+    
+      rows.push('');
+      rows.push(`"Original Total Cost:","${totals.originalCost.toFixed(2)}","Discounted Total Cost:","${totals.discountedCost.toFixed(2)}"`);
+      rows.push(`"Original Total Profit:","${totals.originalProfit.toFixed(2)}","Discounted Total Profit:","${totals.discountedProfit.toFixed(2)}"`);
+      rows.push(`"Total Retail:","${totals.totalRetail.toFixed(2)}"`);
+    
       return rows.join('\n');
     }
 
