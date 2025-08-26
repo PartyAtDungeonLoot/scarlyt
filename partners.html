@@ -512,9 +512,9 @@
       sumProfit.innerHTML = `<span style='text-decoration:line-through; color:red'>${fmt(tProfit)}</span> ${fmt(discountedProfit)}`;
     
       // Update the KPI section (unchanged)
-      kpiCost.textContent = fmt(tCost);
+      kpiCost.textContent = fmt(discountedCost);
       kpiRetail.textContent = fmt(tRetail);
-      kpiProfit.textContent = fmt(tProfit);
+      kpiProfit.textContent = fmt(discountedProfit);
     }
 
     // Wire plan selection
