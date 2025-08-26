@@ -443,29 +443,29 @@
 
       if(planType === 'basic') {
         for (let i = 1; i <= months; i++) {
-            addRow({ month: 1, product: 'Shirt', qty: 1, notes: `Choose Design` });
-            addRow({ month: 1, product: 'Scarlyt', qty: 1, notes: `Pre-order` });
-            addRow({ month: 1, product: 'Small Swag Box', qty: 1, notes: `Stickers/Pins` });
+            addRow({ month: i, product: 'Shirt', qty: 1, notes: `Choose Design` });
+            addRow({ month: i, product: 'Scarlyt', qty: 1, notes: `Pre-order` });
+            addRow({ month: i, product: 'Small Swag Box', qty: 1, notes: `Stickers/Pins` });
         }
         // Add Scarlyt CE line item
         addRow({ month: months, product: "Scarlyt CE", qty: 1, notes: "Free with subscription" });
       }
       else if(planType === 'advanced') {
         for (let i = 1; i <= months; i++) {
-            addRow({ month: 1, product: 'Shirt', qty: 2, notes: `Choose Design` });            
-            addRow({ month: 1, product: 'Hoodie', qty: 1, notes: `Choose Design` });
-            addRow({ month: 1, product: 'Scarlyt', qty: 2, notes: `Pre-order` });
-            addRow({ month: 1, product: 'Medium Swag Box', qty: 1, notes: `Stickers/Pins/Mugs` });
+            addRow({ month: i, product: 'Shirt', qty: 2, notes: `Choose Design` });            
+            addRow({ month: i, product: 'Hoodie', qty: 1, notes: `Choose Design` });
+            addRow({ month: i, product: 'Scarlyt', qty: 2, notes: `Pre-order` });
+            addRow({ month: i, product: 'Medium Swag Box', qty: 1, notes: `Stickers/Pins/Mugs` });
         }
         // Add Scarlyt CE line item
         addRow({ month: months, product: "Scarlyt CE", qty: 1, notes: "Free with subscription" });
       }
       else if(planType === 'expert') {
         for (let i = 1; i <= months; i++) {
-            addRow({ month: 1, product: 'Shirt', qty: 2, notes: `Choose Design` });
-            addRow({ month: 1, product: 'Hoodie', qty: 1, notes: `Choose Design` });
-            addRow({ month: 1, product: 'Scarlyt', qty: 4, notes: `Pre-order` });
-            addRow({ month: 1, product: 'Large Swag Box', qty: 1, notes: `Stickers/Pins/Mugs/Mousepads/Coasters/Hats` });
+            addRow({ month: i, product: 'Shirt', qty: 2, notes: `Choose Design` });
+            addRow({ month: i, product: 'Hoodie', qty: 1, notes: `Choose Design` });
+            addRow({ month: i, product: 'Scarlyt', qty: 4, notes: `Pre-order` });
+            addRow({ month: i, product: 'Large Swag Box', qty: 1, notes: `Stickers/Pins/Mugs/Mousepads/Coasters/Hats` });
         }
         // Add Scarlyt CE line item
         addRow({ month: months, product: "Scarlyt CE", qty: 1, notes: "Free with subscription" });
