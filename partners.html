@@ -234,7 +234,7 @@
   <script>
     // --- MASTER PRICE TABLE (mirror of your Sheet A) ---
     const PRICEBOOK = {
-      "Scarlyt CE":      { cost: 0.00, retail: 299.95, margin:  199.95 },
+      "Scarlyt CE":      { cost: 0.00, retail: 299.95, margin:  299.95 },
       "Shirt":           { cost: 20.00, retail: 29.95, margin:  9.95 },
       "Hoodie":          { cost: 30.00, retail: 44.95, margin: 14.95 },
       "Scarlyt":         { cost: 20.00, retail: 50.00, margin: 30.00 },
@@ -557,9 +557,9 @@
       }
     
       // Update the KPI section (unchanged)
-      kpiCost.textContent = fmt(tCost);
+      kpiCost.textContent = fmt(discountedCost);
       kpiRetail.textContent = fmt(tRetail);
-      kpiProfit.textContent = fmt(tProfit);
+      kpiProfit.textContent = fmt(discountedProfit);
     }
 
     // Wire plan selection
