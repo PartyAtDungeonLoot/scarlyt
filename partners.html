@@ -508,9 +508,9 @@
       const discountedProfit = tProfit + (tCost - discountedCost);
     
       // Update the bottom totals with the discounted values
-      sumCost.textContent = fmt(discountedCost);
+      sumCost.textContent = fmt(tCost);
       sumRetail.textContent = fmt(tRetail); // Retail remains unchanged
-      sumProfit.textContent = fmt(discountedProfit);
+      sumProfit.textContent = fmt(tProfit);
     
       // Update the KPI section
       kpiCost.textContent = fmt(discountedCost);
