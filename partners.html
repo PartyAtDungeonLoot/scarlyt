@@ -543,18 +543,23 @@
         tProfit += lineProfit;
       });
     
-      // Apply discount only to the final totals
-      const discountedCost = tCost * discountFactor;
-      const discountedProfit = tProfit + (tCost - discountedCost);
+      // Apply discount only if discountPercentage > 0
+      if (discountPercentage > 0) {
+        const discountedCost = tCost * discountFactor;
+        const discountedProfit = tProfit + (tCost - discountedCost);
     
-      // Update the bottom totals with the original and discounted values
-      sumCost.innerHTML = `<span style='text-decoration:line-through; color:red'>${fmt(tCost)}</span> ${fmt(discountedCost)}`;
-      sumProfit.innerHTML = `<span style='text-decoration:line-through; color:red'>${fmt(tProfit)}</span> ${fmt(discountedProfit)}`;
+        sumCost.innerHTML = `<span style='text-decoration:line-through; color:red'>${fmt(tCost)}</span> ${fmt(discountedCost)}`;
+        sumProfit.innerHTML = `<span style='text-decoration:line-through; color:red'>${fmt(tProfit)}</span> ${fmt(discountedProfit)}`;
+      } else {
+        // Reset to original totals if no discount
+        sumCost.textContent = fmt(tCost);
+        sumProfit.textContent = fmt(tProfit);
+      }
     
       // Update the KPI section (unchanged)
-      kpiCost.textContent = fmt(discountedCost);
+      kpiCost.textContent = fmt(tCost);
       kpiRetail.textContent = fmt(tRetail);
-      kpiProfit.textContent = fmt(discountedProfit);
+      kpiProfit.textContent = fmt(tProfit);
     }
 
     // Wire plan selection
@@ -564,17 +569,18 @@
       applyPlan(planType);
     });
 
-    // Wire discount input
+    // Create discount input
     const discountInput = document.createElement('input');
     discountInput.type = 'number';
     discountInput.min = 0;
     discountInput.max = 100;
     discountInput.placeholder = 'Discount %';
+    discountInput.value = 0; // Default to 0
     discountInput.addEventListener('input', () => {
       const discountPercentage = Number(discountInput.value) || 0;
       applyDiscount(discountPercentage);
     });
-
+    
     // Add discount input to the footer actions
     const footerActions = document.querySelector('.footer-actions');
     footerActions.insertBefore(discountInput, footerActions.firstChild);
