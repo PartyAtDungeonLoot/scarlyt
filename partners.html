@@ -486,30 +486,36 @@
       recalc();
     }
 
-    // Add discount functionality
     function applyDiscount(discountPercentage) {
       const discountFactor = 1 - (discountPercentage / 100);
-
+    
       let tCost = 0, tRetail = 0, tProfit = 0;
       tbody.querySelectorAll('tr').forEach(tr => {
         const qty = Number(tr.querySelector('[data-col="qty"]').value || 0);
         const product = tr.querySelector('[data-col="product"]').value;
         const pb = PRICEBOOK[product] || { cost: 0, retail: 0, margin: 0 };
-        const lineCost = qty * pb.cost * discountFactor;
+        const lineCost = qty * pb.cost;
         const lineRetail = qty * pb.retail;
         const lineProfit = lineRetail - lineCost;
-
+    
         tCost += lineCost;
         tRetail += lineRetail;
         tProfit += lineProfit;
       });
-
-      sumCost.textContent = fmt(tCost);
-      sumRetail.textContent = fmt(tRetail);
-      sumProfit.textContent = fmt(tProfit);
-      kpiCost.textContent = fmt(tCost);
+    
+      // Apply discount only to the final totals
+      const discountedCost = tCost * discountFactor;
+      const discountedProfit = tProfit + (tCost - discountedCost);
+    
+      // Update the bottom totals with the discounted values
+      sumCost.textContent = fmt(discountedCost);
+      sumRetail.textContent = fmt(tRetail); // Retail remains unchanged
+      sumProfit.textContent = fmt(discountedProfit);
+    
+      // Update the KPI section
+      kpiCost.textContent = fmt(discountedCost);
       kpiRetail.textContent = fmt(tRetail);
-      kpiProfit.textContent = fmt(tProfit);
+      kpiProfit.textContent = fmt(discountedProfit);
     }
 
     // Wire plan selection
