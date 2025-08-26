@@ -507,15 +507,14 @@
       const discountedCost = tCost * discountFactor;
       const discountedProfit = tProfit + (tCost - discountedCost);
     
-      // Update the bottom totals with the discounted values
-      sumCost.textContent = fmt(tCost);
-      sumRetail.textContent = fmt(tRetail); // Retail remains unchanged
-      sumProfit.textContent = fmt(tProfit);
+      // Update the bottom totals with the original and discounted values
+      sumCost.innerHTML = `<span style='text-decoration:line-through; color:red'>${fmt(tCost)}</span> ${fmt(discountedCost)}`;
+      sumProfit.innerHTML = `<span style='text-decoration:line-through; color:red'>${fmt(tProfit)}</span> ${fmt(discountedProfit)}`;
     
-      // Update the KPI section
-      kpiCost.textContent = fmt(discountedCost);
+      // Update the KPI section (unchanged)
+      kpiCost.textContent = fmt(tCost);
       kpiRetail.textContent = fmt(tRetail);
-      kpiProfit.textContent = fmt(discountedProfit);
+      kpiProfit.textContent = fmt(tProfit);
     }
 
     // Wire plan selection
