@@ -543,23 +543,28 @@
         tProfit += lineProfit;
       });
     
-      // Apply discount only if discountPercentage > 0
       if (discountPercentage > 0) {
         const discountedCost = tCost * discountFactor;
         const discountedProfit = tProfit + (tCost - discountedCost);
     
         sumCost.innerHTML = `<span style='text-decoration:line-through; color:red'>${fmt(tCost)}</span> ${fmt(discountedCost)}`;
         sumProfit.innerHTML = `<span style='text-decoration:line-through; color:red'>${fmt(tProfit)}</span> ${fmt(discountedProfit)}`;
+    
+        // Update KPI values with discounted totals
+        kpiCost.textContent = fmt(discountedCost);
+        kpiProfit.textContent = fmt(discountedProfit);
       } else {
         // Reset to original totals if no discount
         sumCost.textContent = fmt(tCost);
         sumProfit.textContent = fmt(tProfit);
+    
+        // Update KPI values with original totals
+        kpiCost.textContent = fmt(tCost);
+        kpiProfit.textContent = fmt(tProfit);
       }
     
-      // Update the KPI section (unchanged)
-      kpiCost.textContent = fmt(discountedCost);
+      // Retail value remains unchanged
       kpiRetail.textContent = fmt(tRetail);
-      kpiProfit.textContent = fmt(discountedProfit);
     }
 
     // Wire plan selection
