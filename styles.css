@@ -441,3 +441,7 @@ footer p {
   height: auto; /* Keeps height flexible */
   aspect-ratio: 16 / 9; /* Maintains proper video proportions */
 }
+
+.hidden-honeypot {
+  display: none;
+}
