@@ -284,6 +284,12 @@ footer p {
   margin: 0;
 }
 
+@media (min-width: 769px) {
+    header .banner img {
+      display: none;
+    }
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .about-section .content {
