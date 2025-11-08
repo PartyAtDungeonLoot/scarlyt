@@ -75,11 +75,12 @@ body {
 
 .pill-logo {
   padding: 4px 14px;
+  border: none;
 }
 
 .pill-logo img {
   display: block;
-  height: 68px;
+  height: 126px;
   width: auto;
 }
 
