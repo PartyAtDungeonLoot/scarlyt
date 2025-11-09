@@ -344,3 +344,9 @@ body {
     height: 210px;
   }
 }
+
+@media (max-width: 729px) {
+  .pill-logo img {
+    height: 126px;
+  }
+}
