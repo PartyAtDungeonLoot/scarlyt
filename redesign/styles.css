@@ -207,10 +207,10 @@ body {
 }
 
 .box-item img {
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .box-item h3 {
@@ -368,6 +368,22 @@ body {
 
   .top-bar .pill-cta.pill-alt {
     order: 2;             /* Ko-fi under Kickstarter */
+  }
+}
+
+@media (min-width: 768px) {
+  .box-item img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  .box-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .box-item p {
+    font-size: 0.95rem;
   }
 }
 
