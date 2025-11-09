@@ -350,3 +350,30 @@ body {
     height: 126px;
   }
 }
+
+@media (max-width: 520px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* Put logo on top */
+  .top-bar .pill-logo {
+    order: 0;
+  }
+
+  /* Buttons underneath */
+  .top-bar .pill-cta {
+    order: 1;
+    width: 100%;
+    max-width: 260px;     /* keeps them from causing overflow */
+    justify-content: center;
+  }
+
+  .top-bar .pill-cta.pill-alt {
+    order: 2;             /* Ko-fi under Kickstarter */
+  }
+}
+
