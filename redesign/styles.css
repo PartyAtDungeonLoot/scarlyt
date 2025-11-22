@@ -280,6 +280,10 @@ body {
   box-shadow: var(--shadow-soft);
 }
 
+.team-member a {
+  text-decoration: none;
+}
+
 .team-member img {
   width: 100%;
   height: 80px;
