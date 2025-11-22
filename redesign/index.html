@@ -18,8 +18,25 @@
         <img src="../logo.jpg" alt="Scarlyt Logo" />
       </a>
 
-      <a href="https://ko-fi.com" class="pill pill-cta pill-alt">Become a Super Backer</a>
+      <button class="pill pill-cta pill-alt superBackerBtn">Become a Super Backer</button>
     </header>
+
+    <!-- Modal -->
+    <div id="sbModal" class="modal" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+      <div class="modal-content">
+        <span class="close" aria-label="Close Modal">&times;</span>
+        <h2 id="modalTitle">Become a Super Backer 💎</h2>
+        <p id="modalDescription">Enter your info below, then support us on Ko-Fi and we'll send you a personal email within 24 hours with your special Kickstarter add-on.</p>
+        <p class="formStatus"></p>
+        <form id="sbForm">
+          <input type="text" name="name" id="name" placeholder="Your Name" required>
+          <input type="email" name="email" id="email" placeholder="Your Email" required>
+          <textarea name="message" id="message" placeholder="Leave a note (optional)"></textarea>
+          <input type="text" name="website" id="website" placeholder="Website" class="hidden-honeypot" autocomplete="off">
+          <button type="submit" class="sb-submit">Continue to Ko‑fi →</button>
+        </form>
+      </div>
+    </div>
 
     <!-- Gameplay / Hero -->
     <section class="section hero">
@@ -199,4 +216,66 @@
 
   </div>
 </body>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyAlGopvsq3Se5dAMK_xhqPRLhndI9NjSwE",
+          authDomain: "scarlyt-backers.firebaseapp.com",
+          projectId: "scarlyt-backers",
+          storageBucket: "scarlyt-backers.firebasestorage.app",
+          messagingSenderId: "1022444554752",
+          appId: "1:1022444554752:web:92435de2352596ef69a6e5",
+          measurementId: "G-MD5MJCXHJ4"
+        };
+        
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+    // Show modal
+    document.getElementById('superBackerBtn').onclick = () => {
+      document.getElementById('sbModal').style.display = 'block';
+    };
+    // Close modal
+    document.querySelector('#sbModal .close').onclick = () => {
+      document.getElementById('sbModal').style.display = 'none';
+    };
+    // Outside click closes modal
+    window.onclick = e => {
+      if (e.target === document.getElementById('sbModal')) {
+        document.getElementById('sbModal').style.display = 'none';
+      }
+    };
+
+        // Get references to your form elements
+        const subscriberForm = document.getElementById('sbForm');
+        const formStatus = document.getElementById('formStatus');
+
+        // Add an event listener for form submission
+        subscriberForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+              const honeypot = document.getElementById('website').value;
+              if (honeypot.trim() !== "") return;
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            try {
+                // Add a new document to the "subscribers" collection
+                await db.collection('subscribers').add({
+                    name: name,
+                    email: email,
+                    message: message,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp() // Adds a server-generated timestamp
+                });
+              window.location.href = "https://ko-fi.com/dungeonloot";
+            subscriberForm.reset(); // Clear the form
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                formStatus.innerHTML = 'Oops! Something went wrong. Please try again.';
+            }
+        });
+</script>
 </html>
